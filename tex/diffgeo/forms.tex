@@ -18,7 +18,7 @@ We'll assume that all functions are \vocab{smooth},
 i.e.\ infinitely differentiable.
 
 Let $U \subseteq V$ be an open set of a vector space $V$.
-Suppose that we have a function $f : U \to \RR$, i.e.\
+Suppose that we have a function $f \colon U \to \RR$, i.e.\
 we assign a value to every point of $U$.
 \begin{center}
 	\begin{asy}
@@ -30,7 +30,7 @@ we assign a value to every point of $U$.
 	\end{asy}
 \end{center}
 \begin{definition}
-	A \vocab{$0$-form} $f$ on $U$ is just a smooth function $f : U \to \RR$.
+	A \vocab{$0$-form} $f$ on $U$ is just a smooth function $f \colon U \to \RR$.
 \end{definition}
 Thus, if we specify a finite set $S$ of points in $U$
 we can ``integrate'' over $S$ by just adding up the values
@@ -44,7 +44,7 @@ So, by analogy, we want a $1$-form to let us integrate
 over $1$-dimensional cells: i.e.\ over curves.
 What information would we need to do that?
 To answer this, let's draw a picture of a curve $c$,
-which can be thought of as a function $c : [0,1] \to U$.
+which can be thought of as a function $c \colon [0,1] \to U$.
 \begin{center}
 	\begin{asy}
 		bigblob("$U$");
@@ -75,7 +75,7 @@ but \textbf{a $1$-form will take both a point \emph{and} a tangent
 vector at that point, and spit out a real number.}
 So a $1$-form $\alpha$ is a smooth function on pairs $(p,v)$,
 where $v$ is a tangent vector at $p$, to $\RR$.  Hence
-\[ \alpha : U \times V \to \RR. \]
+\[ \alpha \colon U \times V \to \RR. \]
 
 Actually, for any point $p$, we will require that $\alpha(p,-)$
 is a linear function in terms of the vectors:
@@ -83,7 +83,7 @@ i.e.\ we want for example that $\alpha(p,2v) = 2\alpha(p,v)$.
 So it is more customary to think of $\alpha$ as:
 \begin{definition}
 	A \vocab{$1$-form} $\alpha$ is a smooth function
-	\[ \alpha : U \to V^\vee. \]
+	\[ \alpha \colon U \to V^\vee. \]
 \end{definition}
 Like with $Df$, we'll use $\alpha_p$ instead of $\alpha(p)$.
 So, at every point $p$, $\alpha_p$ is some linear functional
@@ -94,7 +94,7 @@ Thus, we think of $\alpha_p$ as an element of $V^\vee$;
 Next, we draw pictures of $2$-forms.
 This should, for example, let us integrate over a blob
 (a so-called $2$-cell) of the form
-\[ c : [0,1] \times [0,1] \to U \]
+\[ c \colon [0,1] \times [0,1] \to U \]
 i.e.\ for example, a square in $U$.
 In the previous example with $1$-forms,
 we looked at tangent vectors to the curve $c$.
@@ -140,7 +140,7 @@ Next question:
 \begin{moral}
 	How can we build a $1$-form from a $0$-form?
 \end{moral}
-Let $f$ be a $0$-form on $U$; thus, we have a function $f : U \to \RR$.
+Let $f$ be a $0$-form on $U$; thus, we have a function $f \colon U \to \RR$.
 Then in fact there is a very natural $1$-form on $U$ arising
 from $f$, appropriately called $df$.
 Namely, given a point $p$ and a tangent vector $v$,
@@ -230,7 +230,7 @@ Let $U$ be an open set.
 \begin{definition}
 	We define a \vocab{differential $k$-form} $\alpha$ on $U$
 	to be a smooth (infinitely differentiable) map
-	$\alpha : U \to \Lambda^k(V^\vee)$.
+	$\alpha \colon U \to \Lambda^k(V^\vee)$.
 	(Here $\Lambda^k(V^\vee)$ is the wedge product.)
 \end{definition}
 
@@ -254,7 +254,7 @@ Like with $Df$, we'll use $\alpha_p$ instead of $\alpha(p)$.
 			+ h(p) \cdot \ee_2^\vee \wedge \ee_3^\vee
 			\in \Lambda^2(V^\vee)
 		\]
-		where $f,g,h : V \to \RR$ are smooth functions.
+		where $f,g,h \colon V \to \RR$ are smooth functions.
 	\end{enumerate}
 \end{example}
 
@@ -275,6 +275,7 @@ and $de_I$ represents $e_{i_1}^\vee \wedge \dots \wedge e_{i_k}^\vee$.
 Now that we have an element $\Lambda^k(V^\vee)$, what can it do?
 Well, first let me get the definition on the table, then tell you what it's doing.
 \begin{definition}
+	[How to evaluate a differential form at a point]
 	For linear functions $\xi_1, \dots, \xi_k \in V^\vee$
 	and vectors $v_1, \dots, v_k \in V$, set
 	\[
@@ -352,8 +353,8 @@ pictures of at the beginning of the section.
 It turns out that the exterior derivative is easy to compute
 given explicit coordinates to work with.
 
-First, given a function $f : U \to \RR$,
-we define
+Firstly, we define the exterior derivative
+of a function $f \colon U \to \RR$, as
 \[ df \defeq Df = \sum_i \frac{\partial f}{\partial e_i} e_i^\vee \]
 In particular, suppose $V = \RR^n$ and $f(x_1, \dots, x_n) = x_1$
 (i.e.\ $f = \ee_1^\vee$). Then:
@@ -375,17 +376,20 @@ In particular, suppose $V = \RR^n$ and $f(x_1, \dots, x_n) = x_1$
 \end{abuse}
 \begin{remark}
 	This is the reason why we use the notation $\frac{df}{dx}$ in calculus now:
-	given, say, $f : \RR \to \RR$ by $f(x) = x^2$, it is indeed true that
+	given, say, $f \colon \RR \to \RR$ by $f(x) = x^2$, it is indeed true that
 	\[ df = 2x \cdot \ee_1^\vee = 2x \cdot dx \]
 	and so by (more) abuse of notation we write $df/dx = 2x$.
 \end{remark}
 
-More generally, we can define the \vocab{exterior derivative}
+More generally, we can define the exterior derivative
 in terms of our basis $e_1$, \dots, $e_n$ as follows:
-if $\alpha = \sum_I f_I de_I$ then we set
+\begin{definition}
+If $\alpha = \sum_I f_I de_I$ then we define the \vocab{exterior derivative} as
 \[ d\alpha \defeq \sum_I df_I \wedge de_I
 	= \sum_I \sum_j \fpartial{f_I}{e_j} de_j \wedge de_I. \]
+\end{definition}
 This doesn't depend on the choice of basis.
+(We'll mention a basis-free definition at the end of this section.)
 
 \begin{example}[Computing some exterior derivatives]
 	Let $V = \RR^3$ with standard basis $\ee_1$, $\ee_2$, $\ee_3$.
@@ -428,7 +432,7 @@ Here are some other properties of $d$:
 In fact, one can show that $df$ as defined above is
 the \emph{unique} map sending $k$-forms to $(k+1)$-forms
 with these properties.
-So, one way to define $df$ is to take as axioms
+So, one way to \emph{define} $df$ is to take as axioms
 the bulleted properties above
 and then declare $d$ to be the unique solution to this functional equation.
 In any case, this tells us that our definition of $d$
@@ -464,7 +468,7 @@ Here is one important example.
 	and let $\theta(p)$ be the angle formed by the $x$-axis
 	and the line from the origin to $p$.
 
-	The $1$-form $\alpha : U \to (\RR^2)^\vee$ defined by
+	The $1$-form $\alpha \colon U \to (\RR^2)^\vee$ defined by
 	\[ \alpha = \frac{-y \; dx + x \; dy}{x^2+y^2} \]
 	is called the \vocab{angle form}:
 	given $p \in U$ it measures the change in angle $\theta(p)$
@@ -473,7 +477,7 @@ Here is one important example.
 	Indeed, one can check directly that the angle form is closed.
 
 	However, $\alpha$ is not exact: there is no global smooth
-	function $\theta : U \to \RR$ having $\alpha$ as a derivative.
+	function $\theta \colon U \to \RR$ having $\alpha$ as a derivative.
 	This reflects the fact that one can actually perform
 	a full $2\pi$ rotation around the origin, i.e.\ $\theta$
 	only makes sense mod $2\pi$.

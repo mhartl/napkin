@@ -104,7 +104,7 @@ This is a special case of a more general structure:
 	A \vocab{graded pseudo-ring} $R$ is an abelian group
 	\[ R = \bigoplus_{d \ge 0} R^d \]
 	where $R^0$, $R^1$, \dots, are abelian groups,
-	with an additional associative binary operation $\times : R \to R$.
+	with an additional associative binary operation $\times \colon R \to R$.
 	We require that if $r \in R^d$ and $s \in R^e$, we have $rs \in R^{d+e}$.
 	Elements of an $R^d$ are called \vocab{homogeneous elements};
 	if $r \in R^d$ and $r \neq 0$, we write $|r| = d$.
@@ -164,7 +164,7 @@ We claim that:
 \begin{lemma}
 	[Wedge product respects de Rham cohomology]
 	The wedge product induces a map
-	\[ \wedge : \HdR^k(M) \times \HdR^\ell(M) \to \HdR^{k+\ell}(M). \]
+	\[ \wedge \colon \HdR^k(M) \times \HdR^\ell(M) \to \HdR^{k+\ell}(M). \]
 \end{lemma}
 \begin{proof}
 	First, we recall that the operator $d$ satisfies
@@ -224,7 +224,7 @@ First, we prove an analogous result as before:
 \end{proof}
 Thus, by the same routine we used for de Rham cohomology, we get
 an induced map
-\[ \smile : H^k(X;R) \times H^\ell(X;R) \to H^{k+\ell}(X;R).  \]
+\[ \smile \colon H^k(X;R) \times H^\ell(X;R) \to H^{k+\ell}(X;R).  \]
 We then define the \vocab{singular cohomology ring}
 whose elements are finite sums in
 \[ H^\bullet(X;R) = \bigoplus_{k \ge 0} H^k(X;R) \]
@@ -286,7 +286,7 @@ the cohomology rings of some common spaces.
 	The reason is that $\alpha \smile \alpha = 0 = -(\alpha \smile \alpha)$.
 \end{example}
 
-\begin{example}[Cohmology ring of real and complex projective space]
+\begin{example}[Cohomology ring of real and complex projective space]
 	It turns out that
 	\begin{align*}
 		H^\bullet(\RP^n; \Zc2) &\cong \Zc2[\alpha]/(\alpha^{n+1}) \\
@@ -537,7 +537,7 @@ So it follows that $\CP^3$ and $S^2 \times S^4$ are not homotopy equivalent.
 	Show that $S^m \vee S^n$ is not a deformation retract
 	of $S^m \times S^n$ for any $m,n \ge 1$.
 	\begin{hint}
-		Assume that $r : S^m \times S^n \to S^m \vee S^n$ is such a map.
+		Assume that $r \colon S^m \times S^n \to S^m \vee S^n$ is such a map.
 		Show that the induced map
 		$H^\bullet(S^m \vee S^n; \ZZ) \to H^\bullet(S^m \times S^n; \ZZ)$
 		between their cohomology rings is monic

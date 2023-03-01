@@ -311,14 +311,14 @@ on what basis you picked.
 		e_2 &= (0,1,-1).
 	\end{align*}
 	Alice uses this to construct an isomorphism $A \colon V \to V^\vee$
-	as described above, and considers $e_1^\vee = A(e_1^\vee)$.
+	as described above, and considers $e_1^\vee = A(e_1)$.
 	The element $e_1^\vee \in V^\vee$ is a
 	function $e_1^\vee \colon V \to \RR$,
 	meaning Alice can plug any vector in $V$ into it.
 	As an example, for $v_{\text{example}}$
 	\[ e_1^\vee(v_{\text{example}})
 		= e_1\left( (3,5,-8) \right)
-		= e_1^\vee\left( 3e_1 - 5e_2 \right) = 3. \]
+		= e_1^\vee\left( 3e_1 + 5e_2 \right) = 3. \]
 	Meanwhile, Bob chooses the different basis vectors
 	\begin{align*}
 		f_1 &= (1,0,-1) \\
@@ -328,7 +328,7 @@ on what basis you picked.
 	and a corresponding $f_1^\vee = B(f_1)$.
 	Bob can also evaluate it anywhere, e.g.
 	\[ f_1^\vee\left( v_{\text{example}} \right)
-		f_1^\vee\left( (3, 5, -8) \right)
+		= f_1^\vee\left( (3, 5, -8) \right)
 		= f_1^\vee\left( 8f_1 - 5f_2 \right) = 8. \]
 
 	It follows that $e_1^\vee = A\left( (1,0,-1) \right)$
@@ -405,7 +405,7 @@ We can now write down something that's more true generally.
 The above is perhaps a bit dense, so here is a concrete example.
 \begin{example}[Explicit example]
 	Let $V = \RR^2$ and take a basis $e_1$, $e_2$ of $V$.
-	Then define $T : V \to V$ by
+	Then define $T \colon V \to V$ by
 	\[ T = \begin{bmatrix}
 			1 & 2 \\ 3 & 4
 		\end{bmatrix}. \]
@@ -426,7 +426,7 @@ Despite this, we'll indulge ourselves in using coordinates for the proof.
 	\begin{enumerate}
 		\ii First, we check that $\Psi$ is \emph{surjective};
 		every linear map has at least one representation in $V^\vee \otimes W$.
-		To see this, take any $T : V \to W$.
+		To see this, take any $T \colon V \to W$.
 		Suppose $V$ has basis $e_1$, $e_2$, $e_3$ and that
 		$T(e_1) = w_1$, $T(e_2) = w_2$ and $T(e_3) = w_3$.
 		Then the element
@@ -453,7 +453,7 @@ According to the above theorem,
 \[ \Hom(V, V) \cong V^\vee \otimes V \]
 so every map $V \to V$ can be thought of as an element of $V^\vee \otimes V$.
 But we can also define an
-\emph{evaluation map} $\opname{ev} : V^\vee \otimes V \to k$
+\emph{evaluation map} $\opname{ev} \colon V^\vee \otimes V \to k$
 by ``collapsing'' each pure tensor: $f \otimes v \mapsto f(v)$.
 So this gives us a composed map
 \begin{center}
@@ -544,7 +544,7 @@ This result is called the \vocab{trace} of a matrix $T$.
 	[Putnam 1988]
 	\gim
 	Let $V$ be an $n$-dimensional vector space.
-	Let $T : V \to V$ be a linear map and suppose there exists $n+1$ eigenvectors,
+	Let $T \colon V \to V$ be a linear map and suppose there exists $n+1$ eigenvectors,
 	any $n$ of which are linearly independent.
 	Does it follow that $T$ is a scalar multiple of the identity?
 	\begin{hint}

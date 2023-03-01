@@ -16,7 +16,7 @@ We can make all of this precise using the idea of a group action.
 
 \begin{definition}
 	Let $X$ be a set and $G$ a group.
-	A \vocab{group action} is a binary operation $\cdot : G \times X \to X$
+	A \vocab{group action} is a binary operation $\cdot \colon G \times X \to X$
 	which lets a $g \in G$ send an $x \in X$ to $g \cdot x$.
 	It satisfies the axioms
 	\begin{itemize}
@@ -39,6 +39,12 @@ We can make all of this precise using the idea of a group action.
 		\ii The group $G$ can act on itself (i.e.\ $X=G$) by left multiplication: put $g \cdot g' \defeq g \star g'$.
 	\end{enumerate}
 \end{example}
+
+\begin{exercise}
+	Show that a group action can equivalently be described
+	as a group homomorphism from $G$ to $S_X$, where $S_X$
+	is the symmetric group of permutations on $X$.
+\end{exercise}
 
 \section{Stabilizers and orbits}
 \prototype{Again the AIME problem.}
@@ -182,7 +188,7 @@ for some more examples of ``hands-on'' applications.
 \prototype{In $S_n$, conjugacy classes are ``cycle types''.}
 A particularly common type of action is the so-called \vocab{conjugation}.
 We let $G$ act on itself as follows:
-\[ g : h \mapsto ghg\inv. \]
+\[ g \colon h \mapsto ghg\inv. \]
 You might think this definition is a little artificial.
 Who cares about the element $ghg\inv$?
 Let me try to convince you this definition is not so unnatural.
@@ -337,3 +343,18 @@ A trivial result that gets used enough that I should explicitly call it out:
 		\url{https://math.stackexchange.com/a/3012179/229197}
 	\end{sol}
 \end{dproblem}
+
+\begin{problem}
+	[Athemath Community-Building Event \#1, Fall 2022]
+	A group action $\cdot$ of a group $G$ on set $X$ is said to be
+	\begin{itemize}
+		\ii \vocab{transitive} if for every $x_1, x_2 \in X$,
+		there exists a $g$ such that $g \cdot x_1 = x_2$;
+
+		\ii \vocab{faithful} if the only element $g \in G$
+		such that $g \cdot x = x$ for every $x \in X$ is $g = 1_G$.
+		In other words, the only element which acts trivially on the entire set $X$
+		is the identity element of $G$.
+	\end{itemize}
+	Does there exist a faithful transitive action of  $S_5$ on a six-element set?
+\end{problem}

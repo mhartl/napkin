@@ -5,7 +5,7 @@ In the case of a PID, this in fact gives us a UFD. Sweet.
 We'll define, in a moment, something called the \emph{class group}
 which measures how far $\OO_K$ is from being a PID;
 the bigger the class group, the farther $\OO_K$ is from being a PID.
-In particular, the $\OO_K$ is a PID if it has trivial class group.
+In particular, $\OO_K$ is a PID if it has trivial class group.
 
 Then we will provide some inequalities which let us put restrictions on the class group;
 for instance, this will let us show in some cases that the class group must be trivial.
@@ -53,7 +53,7 @@ which somehow lives inside $\RR$ and is
 ``one-dimensional'' in that sense, into a two-dimensional space.
 It also depends on a choice of basis, which we don't like.
 A better way is to think about the fact that there are two embeddings
-$\sigma_1 : K \to \CC$ and $\sigma_2 : K \to \CC$, namely the identity, and conjugation:
+$\sigma_1 \colon K \to \CC$ and $\sigma_2 \colon K \to \CC$, namely the identity, and conjugation:
 \begin{align*}
 	\sigma_1(a+b\sqrt2) &= a+b\sqrt 2 \\
 	\sigma_2(a+b\sqrt2) &= a-b\sqrt 2.
@@ -259,11 +259,11 @@ hence complex embeddings come in pairs.
 		The elements of $K$ are
 		\[ K = \left\{ a + b\cbrt2 + c\cbrt4 \mid a,b,c \in \QQ  \right\}. \]
 		Then the signature is $(1,1)$, because the three embeddings are
-		\[ \sigma_1 : \cbrt 2 \mapsto \cbrt 2,
+		\[ \sigma_1 \colon \cbrt 2 \mapsto \cbrt 2,
 			\quad
-			\sigma_2 : \cbrt 2 \mapsto \cbrt 2 \omega,
+			\sigma_2 \colon \cbrt 2 \mapsto \cbrt 2 \omega,
 			\quad
-			\sigma_3 : \cbrt 2 \mapsto \cbrt 2 \omega^2. \]
+			\sigma_3 \colon \cbrt 2 \mapsto \cbrt 2 \omega^2. \]
 		The first of these is real and the latter two are conjugate pairs.
 	\end{enumerate}
 \end{example}
@@ -298,7 +298,7 @@ the above tuple is all the information we need.
 
 For reasons that will become obvious in a moment, I'll let $\tau$ denote the isomorphism
 \[
-	\tau : \RR^{r_1} \times \CC^{r_2} \taking{\sim} \RR^{r_1+2r_2} = \RR^n
+	\tau \colon \RR^{r_1} \times \CC^{r_2} \taking{\sim} \RR^{r_1+2r_2} = \RR^n
 \]
 by breaking each complex number into its real and imaginary part, as
 \begin{align*}
@@ -310,11 +310,11 @@ by breaking each complex number into its real and imaginary part, as
 \end{align*}
 \begin{example}[Example of canonical embedding]
 	As before let $K = \QQ(\sqrt[3]{2})$ and set
-	\[ \sigma_1 : \cbrt 2 \mapsto \cbrt 2,
+	\[ \sigma_1 \colon \cbrt 2 \mapsto \cbrt 2,
 		\quad
-		\sigma_2 : \cbrt 2 \mapsto \cbrt 2 \omega,
+		\sigma_2 \colon \cbrt 2 \mapsto \cbrt 2 \omega,
 		\quad
-		\sigma_3 : \cbrt 2 \mapsto \cbrt 2 \omega^2 \]
+		\sigma_3 \colon \cbrt 2 \mapsto \cbrt 2 \omega^2 \]
 	where $\omega = - \half + \frac{\sqrt3}{2} i$,
 	noting that we've already arranged indices so $\sigma_1 = \id$ is real
 	while $\sigma_2$ and $\sigma_3$ are a conjugate pair.
@@ -463,7 +463,7 @@ This looks like the trace, but the absolute values are in the way.
 So instead, we apply AM-GM to obtain:
 \begin{lemma}[Effect of the mousetrap]
 	Let $\alpha \in \OO_K$, and suppose $\iota(\alpha)$ is in $S$
-	(where $\iota : K \injto \RR^{r_1} \times \CC^{r_2}$ as usual).
+	(where $\iota \colon K \injto \RR^{r_1} \times \CC^{r_2}$ as usual).
 	Then
 	\[ \Norm_{K/\QQ}(\alpha)
 		= \prod_{i=1}^n \left\lvert \sigma_i(\alpha) \right\rvert
@@ -472,7 +472,7 @@ So instead, we apply AM-GM to obtain:
 The last step we need to do is compute the volume of the box.
 This is again some geometry I won't do, but take my word for it:
 \begin{lemma}[Size of the mousetrap]
-	Let $\tau : \RR^{r_1} \times \CC^{r_2} \taking\sim \RR^n$ as before.
+	Let $\tau \colon \RR^{r_1} \times \CC^{r_2} \taking\sim \RR^n$ as before.
 	Then the image of $S$ under $\tau$ is a convex, compact, centrally symmetric set with volume
 	\[ 2^{r_1} \cdot \left( \frac{\pi}{2} \right)^{r_2} \cdot \frac{M^n}{n!}. \]
 \end{lemma}

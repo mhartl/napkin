@@ -294,7 +294,7 @@ However, the definition is slightly too restrictive;
 we have to allow for multiple representations:
 \begin{definition}
 	Let $U \subseteq V$ be open.
-	We say a function $\phi : U \to \CC$ is a \vocab{regular function} if for
+	We say a function $\phi \colon U \to \CC$ is a \vocab{regular function} if for
 	every point $p \in U$, we can find an open set $U_p \subseteq U$ containing $p$
 	and a rational function $f_p/g_p$ on $U_p$ such that
 	\[ \phi(x) = \frac{f_p(x)}{g_p(x)} \qquad \forall x \in U_p. \]
@@ -321,10 +321,10 @@ For example:
 		since we can take $g_p = 1$, $f_p = f$ for every $p$.
 		So $\CC[V] \subseteq \OO_V(U)$ for any open set $U$.
 		\ii Let $V = \Aff^1$, $U_0 = V \setminus \{0\}$.
-		Then $1/x \in \OO_V(U_0)$ is regular on $U$.
+		Then $1/x \in \OO_V(U_0)$ is regular on $U_0$.
 		\ii Let $V = \Aff^1$, $U_{12} = V \setminus \{1,2\}$. Then
 		\[ \frac{1}{(x-1)(x-2)} \in \OO_V(U_{12}) \]
-		is regular on $U$.
+		is regular on $U_{12}$.
 	\end{enumerate}
 \end{example}
 The ``local'' clause with $p$'s is still necessary, though.
@@ -459,7 +459,7 @@ Let us agree that:
 	A \vocab{baby ringed space} is a topological space $X$
 	equipped with a ring $\OO_X(U)$ for every open set $U$.
 	It is required that elements of the ring $\OO_X(U)$
-	are functions $f : U \to \CC$;
+	are functions $f \colon U \to \CC$;
 	we call these the \emph{regular functions} of $X$ on $U$.
 \end{definition}
 Therefore, affine varieties are baby ringed spaces.
