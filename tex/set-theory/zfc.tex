@@ -151,7 +151,7 @@ Answer:
 We're going to make \textbf{everything} into a set.
 Natural numbers will be sets. Ordered pairs will be sets. Functions will be sets.
 Later, I'll tell you exactly how we manage to do something like encode $1$ as a set.
-For now, all you need to know is that that sets don't just hold objects;
+For now, all you need to know is that sets don't just hold objects;
 they hold other sets.
 
 So now it makes sense to talk about whether something is a set or not:
@@ -208,12 +208,12 @@ The next two axioms give us basic ways of building new sets.
 	Since $U$ is unique by $\Extensionality$, we denote it $\cup a$.
 
 	\ii
-	We can construct the \vocab{power set} $\mathcal P(x)$.
+	We can construct the \vocab{power set} $\PP(x)$.
 	Formally, the sentence $\PowerSet$ says that
 	\[ \forall x \exists P \forall y (y \in P \iff y \subseteq x) \]
 	where $y \subseteq x$ is short for $\forall z (z \in y \implies z \in x)$.
 	As $\Extensionality$ gives us uniqueness of $P$,
-	we denote it $\mathcal P(x)$.
+	we denote it $\PP(x)$.
 
 	\ii $\Foundation$ says there are no infinite descending chains
 	\[ x_0 \ni x_1 \ni x_2 \ni \dots. \]
@@ -259,6 +259,25 @@ Then there exists a set $Y$ consisting exactly of these images:
 	By abuse of notation, we let $\Replacement$ abbreviate
 	the infinitely many axioms $\Replacement_\phi$ for every $\phi$.
 \end{abuse}
+
+\begin{remark}
+	What do we mean here that ``for every $x \in X$, there is a \emph{unique} $y$ in the universe
+	such that $\phi(x, y)$ is true''? How can we decide, given a formula $\phi$, whether that
+	statement is true, for $\Replacement_\phi$ to be an axiom?
+
+	Turns out we cannot in general. But we don't need it!
+	To circumvent the problem, for every $\phi(x, y)$, the axiom $\Replacement_\phi$ states that
+	\[
+		\text{``$\phi$ defines a function''} \implies
+		\forall X \quad \exists Y \quad \text{``$Y = f\im(X)$''}.
+	\]
+	In other words, the hypothesis that $\phi$ is a function is ``folded in'' the axiom
+	$\Replacement_\phi$ itself.
+
+	This will not really matter to us for now, but later on, it will matter in model theory,
+	where we will state in \Cref{lem:transitive_ZFC} what it means for a model $M$ to
+	satisfy $\Replacement$.
+\end{remark}
 
 We postpone discussion of the Axiom of Choice momentarily.
 
@@ -329,7 +348,6 @@ There is an equivalent formulation which is often useful.
 \end{definition}
 Well-orderings on a set are very nice, because we can pick minimal elements:
 this lets us do induction, for example.
-(And the Foundation axiom tells us $\in$ is a well-ordering itself.)
 
 \begin{example}[Examples and non-examples of well-orderings]
 	\listhack
@@ -425,5 +443,18 @@ so for example we have:
 	which is either red, green, or blue.
 	Each person can see the hat color of everyone except themselves.
 	Simultaneously each person guesses the color of their hat.
-	Show that they can form a strategy such that at most finitely many people guess their color incorrectly.
+	Show that they can form a strategy such that at most
+	finitely many people guess their color incorrectly.
+	\begin{hint}
+		This is an application of Axiom of Choice.
+	\end{hint}
+	\begin{sol}
+		Define an equivalence relation equating two hat configurations
+		if they differ in only finitely many places.
+		Now for each equivalence class, everyone pre-agrees
+		on a particular representative.
+		Finally, note that a person can determine which equiv
+		class the group is in even without their own hat color.
+		Hence they unanimously select the same representative, QED.
+	\end{sol}
 \end{problem}

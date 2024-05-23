@@ -84,7 +84,7 @@ Let's formalize the motivation we began with.
 \begin{example}
 	[Basic examples of categories]
 	\listhack
-	\label{example:basic_categories}
+	\label{ex:basic_categories}
 	\begin{enumerate}[(a)]
 		\ii There is a category of groups $\catname{Grp}$. The data is
 		\begin{itemize}
@@ -341,11 +341,11 @@ The key observation is that
 A function $A \taking f X \times Y$
 amounts to a pair of functions $(A \taking g X, A \taking h Y)$.
 \end{moral}
-Put another way, there is a natural projection map $X \times Y \surjto X$ and $X \times Y \surjto Y$:
+Put another way, there is a natural projection map $X \times Y \to X$ and $X \times Y \to Y$:
 \begin{center}
 \begin{tikzcd}
 	& X \\
-	X \times Y \ar[ru, two heads, "\pi_X"] \ar[rd, two heads, "\pi_Y"'] & \\
+	X \times Y \ar[ru, "\pi_X"] \ar[rd, "\pi_Y"'] & \\
 	& Y
 \end{tikzcd}
 \end{center}
@@ -365,7 +365,7 @@ Picture:
 \begin{tikzcd}
 	&&& X \\
 	A \ar[rrru, bend left, "g"'] \ar[rrrd, bend right, "h"] \ar[rr, dotted, "\exists! f"] &&
-		X \times Y \ar[ru, two heads, "\pi_X"] \ar[rd, two heads, "\pi_Y"] & \\
+		X \times Y \ar[ru, "\pi_X"] \ar[rd, "\pi_Y"] & \\
 	&&& Y
 \end{tikzcd}
 \end{center}
@@ -404,9 +404,9 @@ Nonetheless:
 	\begin{tikzcd}
 		& & X & & \\
 		\\
-		P_1 \ar[rrdd, "\pi_Y^1"', two heads] \ar[rruu, "\pi_X^1", two heads] \ar[rr, "f", two heads]
-			&& P_2 \ar[rr, "g", two heads] \ar[uu, "\pi_X^2"', two heads] \ar[dd, "\pi_Y^2", two heads]
-			&& P_1 \ar[lluu, "\pi_X^1"', two heads] \ar[lldd, "\pi_Y^1"', two heads] \\
+		P_1 \ar[rrdd, "\pi_Y^1"'] \ar[rruu, "\pi_X^1"] \ar[rr, "f"]
+			&& P_2 \ar[rr, "g"] \ar[uu, "\pi_X^2"'] \ar[dd, "\pi_Y^2"]
+			&& P_1 \ar[lluu, "\pi_X^1"'] \ar[lldd, "\pi_Y^1"'] \\
 		\\
 		&& Y  &&
 	\end{tikzcd}
@@ -482,17 +482,17 @@ The picture of this is
 \begin{tikzcd}
 	&& A
 		\ar[dd, "\exists! f"]
-		\ar[llddd, two heads, bend right]
-		\ar[lddd, two heads, bend right]
-		\ar[rddd, two heads, bend left]
-		\ar[rrddd, two heads, bend left]
+		\ar[llddd, bend right]
+		\ar[lddd, bend right]
+		\ar[rddd, bend left]
+		\ar[rrddd, bend left]
 		&& \\
 	&&&& \\
 	&& P
-		\ar[lld, two heads]
-		\ar[ld, two heads]
-		\ar[rd, two heads]
-		\ar[rrd, two heads]
+		\ar[lld]
+		\ar[ld]
+		\ar[rd]
+		\ar[rrd]
 		&& \\
 	X_1 & X_2 && X_3 & X_4
 \end{tikzcd}
@@ -562,7 +562,7 @@ So in these categories, ``monic'' and ``injective'' coincide.
 
 That said, here is the standard counterexample.
 An additive abelian group $G = (G,+)$ is called \emph{divisible}
-if for every $x \in G$ and $n \in \ZZ$ there exists $y \in G$ with $ny = x$.
+if for every $x \in G$ and integer $n > 0$ there exists $y \in G$ with $ny = x$.
 Let $\catname{DivAbGrp}$ be the category of such groups.
 \begin{exercise}
 	Show that the projection $\QQ \to \QQ/\ZZ$ is monic but not injective.
@@ -595,7 +595,7 @@ Most notably:
 	\listhack
 	\begin{enumerate}[(a)]
 		\ii In $\catname{CRing}$, for instance, the inclusion $\ZZ \injto \QQ$ is epic
-		(and not surjective)..
+		(and not surjective).
 		Indeed, if two homomorphisms $\QQ \to A$ agree on
 		every integer then they agree everywhere (why?),
 		\ii In the category of \emph{Hausdorff} topological spaces

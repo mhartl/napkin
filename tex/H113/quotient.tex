@@ -1,4 +1,5 @@
 \chapter{Homomorphisms and quotient groups}
+\label{ch:homomorphisms_quotient}
 \section{Generators and group presentations}
 \prototype{$D_{2n} = \left< r,s \mid r^n=s^2=1\right>$}
 
@@ -102,7 +103,7 @@ In fact, it is undecidable to even determine if a group is finite from its prese
 	[Presentations can look very different]
 	The same group can have very different presentations.
 	For instance consider
-	\[ D_{2n} = \left< x,y \mid x^2=y^2=1, (xy)^n=1. \right>. \]
+	\[ D_{2n} = \left< x,y \mid x^2=y^2=1, (xy)^n=1 \right>. \]
 	(To see why this is equivalent, set $x=s$, $y=rs$.)
 \end{example}
 
@@ -460,7 +461,7 @@ Aside from the fact $H$ is a group, we can get an ``obvious'' property:
 	Hence $H$ is not normal, and cannot be the kernel of any homomorphism.
 \end{example}
 Well, duh -- so what?
-Amazingly it turns out that that this is the \emph{sufficient} condition we want.
+Amazingly it turns out that this is the \emph{sufficient} condition we want.
 Specifically, it makes the nice ``coset multiplication'' we wanted work out.
 \begin{remark}
 	[For math contest enthusiasts]
@@ -556,6 +557,7 @@ Can you write it as a quotient of the form $F_n / N$,
 where $N$ is a normal subgroup of $F_n$?
 
 \section{(Digression) The first isomorphism theorem}
+\label{sec:first_isomorphism_thm}
 One quick word about what other sources usually say.
 
 Most textbooks actually \emph{define} normal using the $ghg\inv \in H$ property.
@@ -572,10 +574,9 @@ The normal condition looks like it gets pulled out of thin air
 and no one has any clue what's going on,
 because no one has any clue what a normal subgroup actually should look like.
 
-Other sources like to also write the so-called first isomorphism theorem.\footnote{
-	There is a second and third isomorphism theorem.
-	But four years after learning about them,
-	I \emph{still} don't know what they are.
+Other sources like to also write the so-called first isomorphism theorem.\footnote{There
+	is a second and third isomorphism theorem.
+	But four years after learning about them, I \emph{still} don't remember what they are.
 	So I'm guessing they weren't very important.}
 It goes like this.
 \begin{theorem}

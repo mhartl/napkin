@@ -1,4 +1,5 @@
 \chapter{Projective varieties}
+\label{ch:projective_varieties}
 Having studied affine varieties in $\Aff^n$, we now consider $\CP^n$.
 We will also make it into a baby ringed space
 in the same way as with $\Aff^n$.
@@ -7,6 +8,8 @@ in the same way as with $\Aff^n$.
 \prototype{$\CC[x_0, \dots, x_n]$ is a graded ring.}
 We first take the time to state what a graded ring is,
 just so that we have this language to use (now and later).
+
+This definition is the same as \Cref{def:graded_ring}.
 
 \begin{definition}
 	A \vocab{graded ring} $R$ is a ring with the following additional structure:
@@ -60,6 +63,11 @@ We will frequently refer to homogeneous ideals:
 \end{lemma}
 Since these assertions are just algebra,
 we omit their proofs here.
+\begin{remark}
+	In some other books, a homogeneous ideal (or \vocab{graded ideal}) is sometimes equivalently defined as an ideal $I$
+	such that $I = \bigoplus_{d \ge 0} (R^d \cap I)$ as abelian group.
+	In fact, we can verify that graded ideals are precisely the ones such that the quotient is naturally graded.
+\end{remark}
 \begin{example}
 	[Example of a graded quotient ring]
 	Let $R = \CC[x,y]$ and set $I = (x^3, y^2)$.
@@ -193,7 +201,7 @@ The way out of this is to use only \emph{homogeneous} ideals.
 	is well-defined for a homogeneous ideal $I$.
 \end{exercise}
 So, we would hope for a Nullstellensatz-like theorem
-which bijects the homogeneous radical ideals to projective ideals.
+which bijects the homogeneous radical ideals to projective varieties.
 Unfortunately:
 \begin{example}
 	[Irrelevant ideal]
@@ -215,7 +223,7 @@ However, other than the irrelevant ideal:
 	Thus there is a natural bijection between:
 	\begin{itemize}
 		\ii projective varieties in $\CP^n$, and
-		\ii homogeneous radical ideals of $\CC[x_1, \dots, x_n]$
+		\ii homogeneous radical ideals of $\CC[x_0, \dots, x_n]$
 		except for the irrelevant ideal.
 	\end{itemize}
 \end{theorem}
@@ -277,6 +285,13 @@ So, it seems natural to then define:
 	is defined as the ring
 	\[ \CC[V] = \CC[x_0, \dots, x_n] / I. \]
 \end{definition}
+
+\begin{remark}
+	Unlike the case of \Cref{remark:meaning_name_coordinate_ring}, an element
+	of $\CC[V]$ no longer correspond to a function from $V$ to $\CC$;
+	nevertheless, it is a function from $\VV(I) \subseteq \Aff^{n+1}$ to $\CC$.
+\end{remark}
+
 However, when we define a rational function we must impose
 a new requirement that the numerator and denominator are the same degree.
 \begin{definition}

@@ -1,4 +1,5 @@
 \chapter{Abelian categories}
+\label{ch:abelian_categories}
 In this chapter I'll translate some more familiar concepts into categorical language;
 this will require some additional assumptions about our category,
 culminating in the definition of a so-called ``abelian category''.
@@ -49,7 +50,7 @@ Similarly, we define the cokernel, the dual notion:
 	The \vocab{cokernel} of $f$ is a map $\coker f \colon B \surjto \Coker f$ such that
 	\begin{center}
 	\begin{tikzcd}
-		A \ar[r, "f"] \ar[rd, "0"', dashed] & B \ar[d, "\coker f", two heads] \\
+		A \ar[r, "f"] \ar[rd, "0"', dashed] & B \ar[d, "\coker f", surjective head] \\
 		& \Coker f
 	\end{tikzcd}
 	\end{center}
@@ -78,7 +79,7 @@ Picture:
 \begin{center}
 \begin{tikzcd}
 	A \ar[rd, "\exists!"'] \ar[rr, "f"] \ar[rrrd, "0"', near start, dashed]
-		&& B \ar[rd, two heads, "\coker f"] \\
+		&& B \ar[rd, surjective head, "\coker f"] \\
 	& \Img f \ar[ur, hook] \ar[rr, "0", dashed] && \Coker f
 \end{tikzcd}
 \end{center}
@@ -103,6 +104,12 @@ which are the types of categories where this notion is most useful.
 		The zero map serves as the identity element for each group.
 \end{itemize}
 \end{definition}
+In short:
+\begin{moral}
+	In an additive category, you can add two morphisms.
+\end{moral}
+Which is the only definition that makes sense anyway, we cannot talk about elements.
+
 \begin{definition}
 	An \vocab{abelian category} $\AA$ is one with the additional properties that
 	for any morphism $A \taking f B$,
@@ -118,8 +125,8 @@ which are the types of categories where this notion is most useful.
 		\Img(f) \ar[rd, hook]
 		&&
 		\Coker(f) \\
-		& A \ar[ru, "\img(f)", two heads] \ar[rr, "f"', dashed]
-		&& B \ar[ru, "\coker(f)"', two heads]
+		& A \ar[ru, "\img(f)", surjective head] \ar[rr, "f"', dashed]
+		&& B \ar[ru, "\coker(f)"', surjective head]
 	\end{tikzcd}
 	\end{center}
 \end{definition}
@@ -134,6 +141,9 @@ which are the types of categories where this notion is most useful.
 		a commutative addition to pairs of morphisms.
 	\end{enumerate}
 \end{example}
+
+From now on, you can basically forget about additive category, we will be working in abelian
+category.
 
 In general, once you assume a category is abelian, all the properties you would want
 of these kernels, cokernels, \dots\ that you would guess hold true.
@@ -180,6 +190,7 @@ For example,
 \end{proof}
 
 \section{Exact sequences}
+\label{sec:exact_sequences}
 \prototype{$0 \to G \to G \times H \to H \to 0$ is exact.}
 Exact sequences will seem exceedingly unmotivated until you learn about homology groups,
 which is one of the most natural places that exact sequences appear.
@@ -208,6 +219,31 @@ We say the entire sequence is exact if it's exact at $k=1,\dots,n-1$.
 	\end{enumerate}
 \end{example}
 
+If you look at the prototypical example, actually, a \vocab{short exact sequence} (an exact sequence
+of the form $0 \to A \to B \to C \to 0$) is the most natural things ever:
+\begin{moral}
+	It's basically just an equation $C = B/A$.
+\end{moral}
+Whenever you see ``there is a short exact sequence $0 \to A \to B \to C \to 0$'', you
+can mentally translate it to ``$C \cong B/A$''; but there's a slight difference:
+A group has more structures than a number, so the sequence also contains the information of the
+maps --- the map that identifies $A$ with a subgroup of $B$, and the map that identifies $C$
+with the quotient group $B/A$.
+\begin{example}[More exact sequences]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii The sequence
+			\[ 0 \to \ZZ \taking{\times 3} \ZZ \to \Zc{3} \to 0 \]
+		is short exact.
+		\ii So is
+			\[ 0 \to \ZZ \taking{\times 5} \ZZ \to \Zc{5} \to 0. \]
+	\end{enumerate}
+	As you can see, the written equation ``$C \cong B/A$'' is not completely accurate, the map $A
+	\to B$ also matters in determining what $C$ is. This also explains the common notation: the
+	image of the map $\ZZ \taking{\times 3} \ZZ$ is usually written $3 \ZZ$, thus $\Zc{3} =
+	\frac{\ZZ}{3 \ZZ}$.
+\end{example}
+
 Now, we want to mimic this definition in a general \emph{abelian} category $\AA$.
 So, let's write down a criterion for when $A \taking f B \taking g C$ is exact.
 First, we had better have that $g \circ f = 0$,
@@ -215,7 +251,7 @@ which encodes the fact that $\img(f) \subseteq \ker(g)$.
 Adding in all the relevant objects, we get the commutative diagram below.
 \begin{center}
 \begin{tikzcd}
-	A \ar[rd, "f"] \ar[rr, dashed, "0"] \ar[dd, "\img f"', two heads] && C  \\
+	A \ar[rd, "f"] \ar[rr, dashed, "0"] \ar[dd, "\img f"', surjective head] && C  \\
 	& B \ar[ru, "g"] \\
 	\Img f \ar[ru, hook, "\iota"] \ar[rr, dashed, "\exists!"] &&
 	\Ker g \ar["0"', dashed, uu] \ar[lu, hook']
@@ -284,10 +320,10 @@ For example, let's prove:
 	\begin{tikzcd}
 		0 \ar[r]
 		& A \ar[r, hook, "p"] \ar[d, "\alpha", "\cong"']
-			& B \ar[r, two heads, "q"] \ar[d, "\beta"]
+			& B \ar[r, surjective head, "q"] \ar[d, "\beta"]
 			& C \ar[r] \ar[d, "\gamma", "\cong"']
 			& 0 \\
-		0 \ar[r] & A' \ar[r, hook, "p'"'] & B' \ar[r, two heads, "q'"'] & C' \ar[r] & 0
+		0 \ar[r] & A' \ar[r, hook, "p'"'] & B' \ar[r, surjective head, "q'"'] & C' \ar[r] & 0
 	\end{tikzcd}
 	\end{center}
 	and assume the top and bottom rows are exact.
@@ -382,7 +418,7 @@ where $C_k = \img f_{k-1} = \ker f_k$ for every $k$.
 	In an abelian category, consider the commutative diagram
 	\begin{center}
 	\begin{tikzcd}
-		A \ar[r, "p"] \ar[d, "\alpha"', two heads]
+		A \ar[r, "p"] \ar[d, "\alpha"', surjective head]
 			& B \ar[r, "q"] \ar[d, "\beta"', hook]
 			& C \ar[r, "r"] \ar[d, "\gamma"']
 			& D \ar[d, "\delta"', hook] \\
@@ -421,7 +457,7 @@ where $C_k = \img f_{k-1} = \ker f_k$ for every $k$.
 	In an abelian category, consider the commutative diagram
 	\begin{center}
 	\begin{tikzcd}
-		A \ar[r, "p"] \ar[d, "\alpha"', two heads]
+		A \ar[r, "p"] \ar[d, "\alpha"', surjective head]
 			& B \ar[r, "q"] \ar[d, "\beta"', "\cong"]
 			& C \ar[r, "r"] \ar[d, "\gamma"']
 			& D \ar[r, "s"] \ar[d, "\delta"', "\cong"]
@@ -441,7 +477,7 @@ where $C_k = \img f_{k-1} = \ker f_k$ for every $k$.
 	In an abelian category, consider the diagram
 	\begin{center}
 	\begin{tikzcd}
-		& A \ar[r, "f"] \ar[d, "a"] & B \ar[r, "g", two heads] \ar[d, "b"] & C \ar[r] \ar[d, "c"] & 0 \\
+		& A \ar[r, "f"] \ar[d, "a"] & B \ar[r, "g", surjective head] \ar[d, "b"] & C \ar[r] \ar[d, "c"] & 0 \\
 		0 \ar[r] & A' \ar[r, hook, "f'"'] & B' \ar[r, "g'"'] & C'
 	\end{tikzcd}
 	\end{center}
@@ -449,3 +485,21 @@ where $C_k = \img f_{k-1} = \ker f_k$ for every $k$.
 	Prove that there is an exact sequence
 	\[ \Ker a \to \Ker b \to \Ker c \to \Coker a \to \Coker b \to \Coker c. \]
 \end{sproblem}
+
+\begin{problem}
+	[An additive category that is not abelian]
+	Consider a category, where:
+	\begin{itemize}
+		\ii the objects are pairs of abelian groups $(B, A)$ where $A$ is a subgroup of $B$.
+		\ii the morphisms $(B, A) \to (B', A')$ are maps $f \colon B \to B'$ where
+		$f\im(A) \subseteq A'$.
+	\end{itemize}
+	(You can think of this similar to the $\catname{PairTop}$ category, seen in
+	\Cref{ch:relative_hom}. We use abelian groups here to make the category additive.)
+
+	This category can be equivalently viewed as the category of short exact sequences
+	$0 \to A \to B \to B/A \to 0$ of abelian groups.
+
+	Show that the arrow $(X, 0) \to (X, X)$ is monic and epic, but not an
+	isomorphism. Conclude that the category is not abelian.
+\end{problem}

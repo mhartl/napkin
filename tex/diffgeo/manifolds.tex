@@ -1,4 +1,5 @@
 \chapter{A bit of manifolds}
+\label{ch:manifolds_diffgeo}
 Last chapter, we stated Stokes' theorem for cells.
 It turns out there is a much larger class of spaces,
 the so-called \emph{smooth manifolds}, for which this makes sense.
@@ -40,6 +41,7 @@ While the first one is the best motivation for examples,
 the second one is easier to use formally.
 
 \begin{definition}
+	\label{def:topological_manif}
 	A \vocab{topological $n$-manifold} $M$ is a Hausdorff space
 	with an open cover $\{U_i\}$ of sets
 	homeomorphic to subsets of $\RR^n$,
@@ -184,6 +186,7 @@ of each $E_1$ and $E_2$:
 We want to add enough structure so that we can use differential forms.
 
 \begin{definition}
+	\label{def:smooth_manif}
 	We say $M$ is a \vocab{smooth manifold}
 	if all its transition maps are smooth.
 \end{definition}
@@ -196,7 +199,7 @@ we built for $\RR^n$ onto our manifolds.
 So in general, all definitions involving smooth manifolds will reduce to
 something on each of the coordinate charts, with a compatibility condition.
 
-AS an example, here is the definition of a ``smooth map'':
+As an example, here is the definition of a ``smooth map'':
 \begin{definition}
 	\begin{enumerate}[(a)]
 		\ii Let $M$ be a smooth manifold.
@@ -206,7 +209,7 @@ AS an example, here is the definition of a ``smooth map'':
 		is smooth as a function $E_i \to \RR$.
 		\ii Let $M$ and $N$ be smooth
 		with atlases $\{ U_i^M \taking{\phi_i} E_i^M \}_i$
-		and $\{ U_j^N \taking{\phi_j} E_j^N \}_j$,
+		and $\{ U_j^N \taking{\phi_j} E_j^N \}_j$.
 		A map $f \colon M \to N$ is \vocab{smooth} if for every $i$ and $j$,
 		the composed map
 		\[ E_i \taking{\phi_i\inv} U_i \injto M
@@ -249,9 +252,8 @@ One very common special case is to take $m = 1$ above.
 	and let $f \colon U \to \RR$ be smooth.
 	Let $M$ be the set of points $p \in U$
 	such that $f(p) = 0$.
-	If $M \neq \varnothing$ and
-	$(Df)_p$ is not the zero map for any $p \in M$,
-	then $M$ is a manifold of dimension $n-1$.
+	If $M \neq \varnothing$ and $(Df)_p$ is not the zero map for any $p \in M$,
+	then $M$ is a manifold of dimension $\dim V-1$.
 \end{corollary}
 
 \begin{example}
@@ -400,13 +402,13 @@ Then Stokes' theorem says
 \begin{theorem}
 	[Stokes' theorem for manifolds]
 	Let $M$ be a smooth oriented $n$-manifold with boundary
-	and let $\alpha$ be a compactly supported $n-1$-form.
+	and let $\alpha$ be a compactly supported $(n-1)$-form.
 	Then
 	\[ \int_M d\alpha = \int_{\partial M} \alpha. \]
 \end{theorem}
 All the omitted details are developed in full in \cite{ref:manifolds}.
 
-\section{(Optional) The tangent and contangent space}
+\section{(Optional) The tangent and cotangent space}
 \prototype{Draw a line tangent to a circle, or a plane tangent to a sphere.}
 
 Let $M$ be a smooth manifold and $p \in M$ a point.
@@ -448,7 +450,7 @@ rather than as embedded in $\RR^n$.\footnote{This
 	Note this wasn't always the case!
 	During the 19th century, a group was literally defined
 	as a subset of $\text{GL}(n)$ or of $S_n$.
-	In fact Sylow developed his theorems without the word ``group''
+	In fact Sylow developed his theorems without the word ``group''.
 	Only much later did the abstract definition of a group was given,
 	an abstract set $G$ which was independent of any \emph{embedding} into $S_n$,
 	and an object in its own right.}
@@ -545,8 +547,8 @@ Using some real analysis, one can prove the following result:
 	Then
 	\[
 	\begin{aligned}
-		\km_0 &= \{ \text{smooth functions } f \colon f(0) = 0 \} \\
-		\km_0^2 &= \{ \text{smooth functions } f \colon f(0) = 0, (\nabla f)_0 = 0 \}.
+		\km_0 &= \{ \text{smooth functions } f \mid f(0) = 0 \} \\
+		\km_0^2 &= \{ \text{smooth functions } f \mid f(0) = 0, (\nabla f)_0 = 0 \}.
 	\end{aligned}
 	\]
 	In other words $\km_0^2$ is the set of functions which vanish at $0$

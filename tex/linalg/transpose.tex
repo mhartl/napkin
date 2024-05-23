@@ -1,4 +1,5 @@
 \chapter{Duals, adjoint, and transposes}
+\label{ch:duals_adjoint_transposes}
 This chapter is dedicated to the basis-free interpretation
 of the transpose and conjugate transpose of a matrix.
 
@@ -278,6 +279,7 @@ However, it turns out that there is
 a complete characterization of exactly when our overzealous dream is true.
 
 \begin{definition}
+	\label{def:hermitian}
 	We say a linear map $T$
 	(from a finite-dimensional inner product space to itself)
 	is \vocab{normal} if $TT^\dagger = T^\dagger T$.
@@ -439,7 +441,7 @@ As a corollary:
 	\begin{hint}
 		This actually is just the previous problem in disguise!
 		The row rank is $\dim \img T^\vee$
-		and the column rank is $\dim \ker T$.
+		and the column rank is $\dim \img T$.
 	\end{hint}
 \end{dproblem}
 
@@ -450,7 +452,7 @@ As a corollary:
 	Define the \vocab{complex conjugate vector space},
 	denoted $\ol V = (V, +, \ast)$
 	by changing just the multiplication:
-	\[ c \ast v = \ol c \cdot V. \]
+	\[ c \ast v = \ol c \cdot v. \]
 	Show that for any sesquilinear form on $V$,
 	if $V$ is finite-dimensional, then
 	\begin{align*}

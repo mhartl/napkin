@@ -1,4 +1,5 @@
 \chapter{Dual space and trace}
+\label{ch:dual_space_trace}
 You may have learned in high school that given a matrix
 \[
 	\begin{bmatrix}
@@ -317,7 +318,7 @@ on what basis you picked.
 	meaning Alice can plug any vector in $V$ into it.
 	As an example, for $v_{\text{example}}$
 	\[ e_1^\vee(v_{\text{example}})
-		= e_1\left( (3,5,-8) \right)
+		= e_1^\vee\left( (3,5,-8) \right)
 		= e_1^\vee\left( 3e_1 + 5e_2 \right) = 3. \]
 	Meanwhile, Bob chooses the different basis vectors
 	\begin{align*}
@@ -485,6 +486,11 @@ This result is called the \vocab{trace} of a matrix $T$.
 		Follows by writing $T$ in an eigenbasis:
 		then the diagonal entries are the eigenvalues.
 	\end{hint}
+	\begin{sol}
+		We saw already the trace is always the sum of the eigenvalues, in \emph{any} basis.
+		In particular, choosing the Jordan form basis from the previous chapter
+		gives the result because the Jordan form has the eigenvalues for its diagonal entries.
+	\end{sol}
 \end{problem}
 
 \begin{dproblem}

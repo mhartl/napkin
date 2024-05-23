@@ -1,4 +1,16 @@
 %%fakesection Load packages
+
+\usepackage{lmodern}
+\usepackage[pdfusetitle]{hyperref}
+\ExplSyntaxOn
+\sys_if_engine_luatex:T {
+	\usepackage{luatex85}
+}
+\sys_if_engine_pdftex:T {
+	\usepackage[T1]{fontenc}
+}
+\ExplSyntaxOff
+
 % These are evan.sty
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathrsfs}
@@ -13,7 +25,6 @@
 \usepackage{wasysym}
 \usepackage{multirow}
 \usepackage{prerex}
-\usepackage{hyperref}
 \usepackage[nameinlink]{cleveref}
 
 %%fakesection evan.sty macros
@@ -27,12 +38,14 @@
 	\bfseries\color{green!50!black}}%
 	{\end{mdframed}}
 
-%%fakesection Links
+%%fakesection Links (hyperref loaded earlier implicitly)
 \hypersetup{
-    colorlinks,
-    linkcolor={red!50!black},
-    citecolor={green!50!black},
-    urlcolor={blue!80!black}
+	linkcolor={red!50!black},
+	citecolor={green!50!black},
+	urlcolor={blue!80!black},
+	pdfkeywords={napkin,math},
+	pdfsubject={web.evanchen.cc},
+	colorlinks,
 }
 
 %%fakesection Commutative diagrams
@@ -42,28 +55,32 @@
 % https://tex.stackexchange.com/questions/514451/how-to-define-a-new-hooked-arrow
 \makeatletter
 \pgfdeclarearrow{
-  name=xGlyph,
-  cache=false,
-  bending mode=none,
-  parameters={\tikzcd@glyph@len,\tikzcd@glyph@shorten},
-  setup code={%
-    \pgfarrowssettipend{\tikzcd@glyph@len\advance\pgf@x by\tikzcd@glyph@shorten}},
-  defaults={
-    glyph axis=axis_height,
-    glyph length=+1.55ex,
-    glyph shorten=+-0.1ex},
-  drawing code={%
-    \pgfpathrectangle{\pgfpoint{+0pt}{+-1.5ex}}{\pgfpoint{+\tikzcd@glyph@len}{+3ex}}%
-    \pgfusepathqclip%
-    \pgftransformxshift{+\tikzcd@glyph@len}%
-    \pgftransformyshift{+-\tikzcd@glyph@axis}%
-    \pgftext[right,base]{\tikzcd@glyph}}}
+	name=xGlyph,
+	cache=false,
+	bending mode=none,
+	parameters={\tikzcd@glyph@len,\tikzcd@glyph@shorten},
+	setup code={%
+		\pgfarrowssettipend{\tikzcd@glyph@len\advance\pgf@x by\tikzcd@glyph@shorten}},
+	defaults={
+		glyph axis=axis_height,
+		glyph length=+1.55ex,
+		glyph shorten=+-0.1ex},
+	drawing code={%
+		\pgfpathrectangle{\pgfpoint{+0pt}{+-1.5ex}}{\pgfpoint{+\tikzcd@glyph@len}{+3ex}}%
+		\pgfusepathqclip%
+		\pgftransformxshift{+\tikzcd@glyph@len}%
+		\pgftransformyshift{+-\tikzcd@glyph@axis}%
+		\pgftext[right,base]{\tikzcd@glyph}}}
 \makeatother
 \tikzcdset{
 	arrow style=tikz,
 	diagrams={>={Latex}},
 	tikzcd left hook/.tip={xGlyph[glyph math command=supset, swap, glyph axis = 5.7pt]},
-	tikzcd right hook/.tip={xGlyph[glyph math command=supset, glyph axis = 5.7pt]}
+	tikzcd right hook/.tip={xGlyph[glyph math command=supset, glyph axis = 5.7pt]},
+	surjective head arrow /.tip = {tikzcd to[sep=-1.5pt]tikzcd to},
+	surjective head/.style={
+		-surjective head arrow
+	}
 }
 
 %%fakesection Page layout
@@ -134,7 +151,6 @@
 	frametitlefont=\bfseries,
 	innertopmargin=4pt,
 	innerbottommargin=8pt,
-	nobreak=true,
 	linecolor=RawSienna,
 	backgroundcolor=Salmon!5,
 }
@@ -197,7 +213,6 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 	mdframed={style=mdblackbox}
 ]{thmblackbox}
 
-\theoremstyle{theorem}
 \declaretheorem[name=Question,sibling=theorem,style=thmblackbox]{ques}
 \declaretheorem[name=Exercise,sibling=theorem,style=thmblackbox]{exercise}
 \declaretheorem[name=Remark,sibling=theorem,style=thmgreenbox]{remark}
@@ -230,8 +245,8 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 \makeatletter
 \usepackage{etoolbox}
 \pretocmd{\tableofcontents}{%
-  \if@openright\cleardoublepage\else\clearpage\fi
-  \pdfbookmark[0]{\contentsname}{toc}%
+	\if@openright\cleardoublepage\else\clearpage\fi
+	\pdfbookmark[0]{\contentsname}{toc}%
 }{}{}%
 \makeatother
 \setcounter{tocdepth}{1}
@@ -249,13 +264,13 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 	usepackage("amsmath");
 	usepackage("amssymb");
 	defaultpen(fontsize(11pt));
-	settings.tex="latex";
-	settings.outformat="pdf";
+	settings.tex = "latex";
+	settings.outformat = "pdf";
 \end{asydef}
 \def\asydir{asy}
 
 %%fakesection Bibliography
-\usepackage[backend=biber,style=alphabetic]{biblatex}
+\usepackage[backend=biber,backref=true,style=alphabetic]{biblatex}
 \DeclareLabelalphaTemplate{
 	\labelelement{
 		\field[final]{shorthand}
@@ -269,6 +284,20 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 \DeclareFieldFormat{labelalpha}{\textbf{\scriptsize #1}}
 \addbibresource{references.bib}
 \addbibresource{images.bib}
+%% stylistic biblatex choices
+\DefineBibliographyStrings{english}{%
+	backrefpage  = {cited p.}, % for single page number
+	backrefpages = {cited pp.} % for multiple page numbers
+}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1},} % italic journal title with comma
+\DeclareFieldFormat[inbook,thesis]{title}{\mkbibemph{#1}\addperiod} % italic title with period
+\DeclareFieldFormat[article]{title}{#1} % title of journal article is printed as normal text
+\DeclareFieldFormat[article]{volume}{\textbf{#1}\addcolon\space}
+\renewcommand{\mkbibnamegiven}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand{\mkbibnameprefix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
+\renewcommand{\finentrypunct}{}
 
 %%fakesection Mini ToC
 \usepackage[tight]{minitoc}
@@ -285,4 +314,4 @@ style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
 \doparttoc[n]
 
 %%fakesection Misc haxx
-\pdfstringdefDisableCommands{\def\Spec{\text{Spec }}}
+\pdfstringdefDisableCommands{\def\Spec{\text{Spec }}\def\sigma{σ}}

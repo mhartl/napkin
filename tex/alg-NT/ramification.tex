@@ -1,4 +1,5 @@
 \chapter{Ramification theory}
+\label{ch:ramification_theory}
 We're very interested in how rational primes $p$ factor in a bigger number field $K$.
 Some examples of this behavior: in $\ZZ[i]$ (which is a UFD!), we have factorizations
 \begin{align*}
@@ -121,7 +122,7 @@ We conclude that $\Norm(\kp_i) = p^{f_i}$ for some integer $f_i \ge 1$, and more
 OK, that's all fine and well.
 But something \emph{really magical} happens when we add the
 additional hypothesis that $K/\QQ$ is \emph{Galois}:
-all the inertial degrees and ramification degrees are equal.
+all the inertial degrees and ramification indices are equal.
 We set about proving this.
 
 Let $K/\QQ$ be Galois with $G = \Gal(K/\QQ)$.
@@ -163,6 +164,7 @@ orbit are closely related.
 But miraculously, it turns out there is only one orbit!
 \begin{theorem}
 	[Galois group acts transitively]
+	\label{thm:galois_group_transitive}
 	Let $K/\QQ$ be Galois with $G = \Gal(K/\QQ)$.
 	Let $\{\kp_i\}$ be the set of distinct prime ideals in
 	the factorization of $p \cdot \OO_K$ (in $\OO_K$).
@@ -170,10 +172,38 @@ But miraculously, it turns out there is only one orbit!
 	Then $G$ acts transitively on the $\kp_i$:
 	for every $i$ and $j$, we can find $\sigma$ such that $\sigma\kp_i = \kp_j$.
 \end{theorem}
+In other words,
+\begin{moral}
+	All of the $\{\kp_i\}$ are Galois conjugates of each other.
+\end{moral}
+
+Before proving this, let us consider the easier problem
+of factorization into elements.
+\begin{quote}
+	Suppose $\OO_K$ is an UFD, and $p$ factors as $u p_1 p_2 \cdots p_n$ in
+	$\OO_K$, where $p_i$ are irreducibles and $u$ is an unit.
+	Show that the $p_i$ are all conjugates of each other, up to
+	multiplication by an unit.
+\end{quote}
+\begin{ques}
+	Try to prove it before reading it below.
+	(Hint: Galois theory. Alternatively, take the norm of $p_1$.)
+\end{ques}
 \begin{proof}
-	Fairly slick.
-	Suppose for contradiction that no $\sigma \in G$ sends $\kp_1$ to $\kp_2$, say.
-	By the Chinese remainder theorem, we can find an $x \in \OO_K$ such that
+	Let $q=\NK(p_1)$ be the product of all conjugates
+	of $p_1$, then $q \in \QQ$. Thus $p \mid q$, so each $p_i$ is a factor of
+	$q$, and we're done by unique factorization.
+\end{proof}
+
+Unfortunately, the product of all conjugates of an ideal $\kp_1$ is not
+necessarily of the form $p \cdot \OO_K$ (for example, $K=\QQ[i]$ and $(1+i)$
+has no other conjugates). So in the proof, we pick $x$ which is an
+``representative'' of $\kp_1$.
+
+\begin{proof}
+	[Proof of \Cref{thm:galois_group_transitive}]
+	Because $\kp_i$ are distinct primes, by the Chinese remainder theorem,
+	we can find an $x \in \OO_K$ such that
 	\begin{align*}
 		x &\equiv 0 \pmod{\kp_1} \\
 		x &\equiv 1 \pmod{\kp_i} \text{ for $i \ge 2$}
@@ -186,9 +216,13 @@ But miraculously, it turns out there is only one orbit!
 	Since $\NK(x)$ is an integer and divisible by $\kp_1$,
 	we should have that $\NK(x)$ is divisible by $p$.
 	Thus it should be divisible by $\kp_2$ as well.
-	But by the way we selected $x$, we have $x \notin \sigma\inv\kp_2$ for every $\sigma \in G$!
-	So $\sigma(x) \notin \kp_2$ for any $\sigma$, which is a contradiction.
+	Thus, for some $\sigma \in \Gal(K/\QQ)$, $\sigma(x)$ is divisible by
+	$\kp_2$, equivalently, $x$ is divisible by $\sigma\inv\kp_2$.
+	But by the way we selected $x$, we have within the factors of $p$, $x$ is
+	divisible by only $\kp_1$!
+	So $\sigma\inv\kp_2 = \kp_1$, and we're done.
 \end{proof}
+
 \begin{theorem}[Inertial degree and ramification indices are all equal]
 	Assume $K/\QQ$ is Galois.
 	Then for any rational prime $p$ we have
@@ -262,21 +296,26 @@ So we ask:
 	How are $\Gal\left( (\OO_K/\kp) / \FF_p \right)$
 	and $\Gal(K/\QQ)$ related?
 \end{quote}
-Absurdly enough, there is an explicit answer:
-\textbf{it's just the stabilizer of $\kp$, at least when
-$p$ is unramified}.
+
+First, every $\sigma \in \Gal(K/\QQ)$ induces an automorphism of $\OO_K$, which induces a map
+$\OO_K \to \OO_K/\kp$ by
+\[ \alpha \mapsto \sigma(\alpha) \pmod\kp. \]
+For this to induce a map in $\Gal\left( (\OO_K/\kp) / \FF_p \right)$, it's necessary that $\sigma(\kp) \subseteq \kp$. So, we consider the subset of automorphisms that fixes $\kp$:
 \begin{definition}
 	Let $D_\kp \subseteq \Gal(K/\QQ)$ be the stabilizer of $\kp$, that is
 	\[ D_\kp \defeq \left\{ \sigma \in \Gal(K/\QQ) \mid \sigma\kp = \kp \right\}. \]
 	We say $D_\kp$ is the \vocab{decomposition group} of $\kp$.
 \end{definition}
-Then, every $\sigma \in D_\kp$ induces an automorphism of $\OO_K / \kp$ by
-\[ \alpha \mapsto \sigma(\alpha) \pmod\kp. \]
+Note that this definition is in fact equivalent to the set of $\sigma$ such that $\sigma(\kp) \subseteq \kp$,
+because a field isomorphism fixes the ideal norm $\Norm(\kp)$.
+
 So there's a natural map
 \[ D_\kp \taking\theta \Gal\left( (\OO_K/\kp) / \FF_p \right) \]
 by declaring $\theta(\sigma)$ to just be ``$\sigma \pmod \kp$''.
 The fact that $\sigma \in D_\kp$ (i.e.\ $\sigma$ fixes $\kp$)
 ensures this map is well-defined.
+
+Surprisingly, every element of $\Gal\left( (\OO_K/\kp) / \FF_p \right)$ arises this way from some field automorphism of $K$.
 
 \begin{theorem}[Decomposition group and Galois group]
 	\label{thm:decomposition}
@@ -309,7 +348,7 @@ We already have $ \OO_K / \kp \cong \FF_{p^f} $, and the Galois group is
 So \[ D_\kp \cong \Zc f \] as well.
 
 Let's now go back to
-\[ D_\kp \taking\theta \Gal\left( (\OO_K/\kp) : \FF_p \right). \]
+\[ D_\kp \taking\theta \Gal\left( (\OO_K/\kp)/\FF_p \right). \]
 The kernel of $\theta$ is called the \vocab{inertia group}
 and denoted $I_\kp \subseteq D_\kp$; it has order $e$.
 
@@ -321,49 +360,98 @@ Picture:
 \begin{center}
 \begin{tikzcd}
 	\kp \subset \OO_K \subset
-		& K \ar[r, leftrightarrow] \ar[d, "\text{Ramify}"']
+		& K \ar[r, leftrightarrow] \ar[<-, d, "\text{Ramify}"']
 		& \{1\} \ar[d, "e"] \\
-	\; & K^I \ar[d, "\text{Inert}"'] & I \ar[d, "f"] \\
-	\; & K^D \ar[d, "\text{Split}"'] & D \ar[d, "g"] \\
+	\; & K^I \ar[<-, d, "\text{Inert}"'] & I \ar[d, "f"] \\
+	\; & K^D \ar[<-, d, "\text{Split}"'] & D \ar[d, "g"] \\
 	(p) \subset \ZZ \subset
 		& \QQ \ar[r, leftrightarrow]
 		& G
 \end{tikzcd}
 \end{center}
 
-\textbf{TODO}:
-the rest of this section is broken and commented out, needs fix
-(actually I'm not sure what the correct statement is, for that matter).
+Something curious happens:
+\begin{itemize}
+	\ii If $D \normalin G$, when $(p)$ is lifted into $K^D$ it splits completely into $g$ unramified
+	primes.
+	Each of these has inertial degree $1$.
+	\ii If $I \normalin G$ as well, when the primes in $K^D$ are lifted to $K^I$, they remain inert,
+	and now have inertial degree $f$.
+	\ii When they're then lifted to $K$, they ramify with exponent $e$ (but don't split at all).
+\end{itemize}
+In other words, the process of going from $1$ to $efg$
+can be very nicely broken into the three steps above.
+To draw this in the picture, we get
+\begin{center}
+\begin{tikzcd}
+	(p) \ar[r]
+		& \kp'_1 \dots \kp'_g \ar[r]
+		& \kp''_1 \dots \kp''_g \ar[r]
+		& (\kp_1 \dots \kp_g)^e \\
+	\{f_i\}: & 1,\dots,1 & f,\dots,f & f,\dots,f \\
+	\QQ \ar[r, dash, "\text{Split}"]
+		& K^D \ar[r, dash, "\text{Inert}"]
+		& K^I \ar[r, dash, "\text{Ramify}"]
+		& K
+\end{tikzcd}
+\end{center}
+In any case, in the ``typical'' case that there is no ramification,
+we just have $K^I = K$.
 
-%Something curious happens:
-%\begin{itemize}
-%	\ii When $(p)$ is lifted into $K^D$ it splits completely into $g$ unramified primes.
-%	Each of these has inertial degree $1$.
-%	\ii When the primes in $K^D$ are lifted to $K^I$, they remain inert, and now have
-%	inertial degree $f$.
-%	\ii When then lifted to $K$, they ramify with exponent $e$ (but don't split at all).
-%\end{itemize}
-%Picture:
-%In other words, the process of going from $1$ to $efg$
-%can be very nicely broken into the three steps above.
-%To draw this in the picture, we get
-%\begin{center}
-%\begin{tikzcd}
-%	(p) \ar[r]
-%		& \kp_1 \dots \kp_g \ar[r]
-%		& \kp_1 \dots \kp_g \ar[r]
-%		& (\kp_1 \dots \kp_g)^e \\
-%	\{f_i\}: & 1,\dots,1 & f,\dots,f & f,\dots,f \\
-%	\QQ \ar[r, dash, "\text{Split}"]
-%		& K^D \ar[r, dash, "\text{Inert}"]
-%		& K^I \ar[r, dash, "\text{Ramify}"]
-%		& K
-%\end{tikzcd}
-%\end{center}
-%In any case, in the ``typical'' case that there is no ramification,
-%we just have $K^I = K$.
+\begin{example}[Primes split before remaining inert]
+	Let $K = \QQ[\zeta_5]$ where $\zeta_5$ is a primitive 5th root of unity.
+	From \Cref{prob:galois_cyclotomic}, we know that the Galois group $\Gal(K/\QQ)$ is isomorphic to
+	$(\ZZ/5\ZZ)^\ast \cong \ZZ/4\ZZ$.
+
+	Let $p = 19$. In $K$, $p$ factors as $19 = (2 \sqrt 5+1)(2 \sqrt 5-1)$,
+	and luckily for us, $\OO_K$ is a principal ideal domain, which means the ideal $(19)$ factors as
+	$(19) = \kp_1 \kp_2 = (2 \sqrt 5+1)(2 \sqrt 5-1)$.
+
+	In this case, we have $K^{D_{\kp_1}} = K^D = \QQ[\sqrt 5]$ and $K^I = K$, and indeed:
+	\begin{itemize}
+		\ii When $(19)$ is lifted to $K^D$, it already splits into $(2 \sqrt 5+1)(2 \sqrt 5-1)$ ---
+		because $2 \sqrt 5+1 \in K^D$. As $[K^D: \QQ] = 2$ and $(19)$ already split into $2$
+		primes, each of the prime necessarily have inertial degree $1$.
+		\ii When each of $(2 \sqrt 5+1)$ and $(2 \sqrt 5-1)$ is lifted from $K^D$ to $K$, they
+		remains inert. Again, as $[K: K^D] = 2$, the inertial degree must be 2.
+	\end{itemize}
+
+	Part of the theorem can be seen very easily:
+	by the fundamental theorem of Galois theory, because all of the field automorphisms in $D$ fixes
+	$2 \sqrt 5+1$, then tautologically, $2 \sqrt 5+1$ must belong to the fixed field of $D$!
+	In other words, $2 \sqrt 5+1 \in K^D$, which means $p$ already splits when lifted to $K^D$.
+
+	The argument only need to be modified a little to show $\kp_1' = \kp_1 \cap K^D$ does not split
+	when lifted from $K^D$ to $K$: because the extension $K/K^D$ is Galois,
+	the Galois group $\Gal(K/K^D)$ acts transitively on the primes $\kp_i$ above $\kp'_1 = (2
+	\sqrt 5+1) \subseteq K^D$, but once again, $\kp_1$ is the only prime in the orbit
+	by the definition of $D$.
+\end{example}
+
+\begin{example}[Different primes have different $K^D$]
+	When $D \not\normalin G$, there need not be a single subfield $K^D$ that $p$ splits cleanly into
+	$\kp_1 \dots \kp_g$ when lifted to that field.
+
+	The reason is simple --- each prime $\kp_i$ gets split from the product in its \emph{own}
+	$K^{D_{\kp_i}}$, but if $D_{\kp_1}$ is not normal in $G$,
+	then the different $D_{\kp_i}$ are not the same ---
+	instead, they're conjugate subgroups of $G$.
+
+	Let us take a concrete example: let $K = \QQ(\sqrt[3] 2, \omega)$ be the splitting field of
+	$x^3-2$ over $\QQ$. The rational prime $p = (5)$ splits as $p = \kp_1 \kp_2 \kp_3$ in $K$, and
+	each has inertial degree $2$. Thus $|D_{\kp_i}| = 2$ for each $i$.
+
+	We know that $\Gal(K/\QQ) \cong S_3$, and $S_3$ has no subgroups of order $2$, so obviously
+	$D_{\kp_i}$ is not normal in $G$!
+
+	As mentioned above, what happens here is: when $p$ is lifted to $K^{D_{\kp_1}}$, it splits into
+	$\kp'_1 \kp'_{23}$, with $\kp_1$ above $\kp'_1$ and both $\kp_2$ and $\kp_3$ above $\kp'_{23}$.
+	In the extension $K^{D_{\kp_1}}/\QQ$, $\kp'_1$ has inertial degree $1$ as before,
+	but $\kp'_{23}$ has inertial degree $2$.
+\end{example}
 
 \section{Tangential remark: more general Galois extensions}
+\label{sec:more_general_extensions}
 All the discussion about Galois extensions
 carries over if we replace $K/\QQ$ by some different Galois extension $K/F$.
 Instead of a rational prime $p$ breaking down in $\OO_K$,

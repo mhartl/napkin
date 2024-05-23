@@ -1,4 +1,5 @@
 \chapter{Stopped martingales (TO DO)}
+\label{ch:martingales}
 \section{How to make money almost surely}
 We now take our newfound knowledge of measure theory to a casino.
 
@@ -97,9 +98,9 @@ Here are some more serious examples.
 		variable taking on one of three values.
 		If we're interested in $X$ then we could define
 		\begin{align*}
-			A &= \{\omega \colon X(\omega) = 1\} \\
-			B &= \{\omega \colon X(\omega) = 2\} \\
-			C &= \{\omega \colon X(\omega) = 3\}
+			A &= \{\omega \mid X(\omega) = 1\} \\
+			B &= \{\omega \mid X(\omega) = 2\} \\
+			C &= \{\omega \mid X(\omega) = 3\}
 		\end{align*}
 		then we could write
 		\[ \SF = \left\{ \varnothing, \; A, \; B, \; C, \;
@@ -580,7 +581,7 @@ Bob in the election?
 	Finally let $\tau \colon \Omega \to \{1, 2, \dots\}$
 	be a stopping time such that $\mathbb E[\tau] < \infty$,
 	such that the event $\tau = n$ depends only on $X_1$, \dots, $X_n$.
-	
+
 	Prove that
 	\[ \EE[X_1 + X_2 + \dots + X_\tau] = \mu \EE[\tau]. \]
 \end{problem}
@@ -621,4 +622,3 @@ Bob in the election?
 		(Incidentally, using the law of large numbers could work too.)
 	\end{hint}
 \end{problem}
-

@@ -1,4 +1,5 @@
 \chapter{Power series and Taylor series}
+\label{ch:power_series_taylor_series}
 Polynomials are very well-behaved functions,
 and are studied extensively for that reason.
 From an analytic perspective, for example, they are smooth,
@@ -25,7 +26,7 @@ we will see three great things:
 To get the ball rolling, let's start with
 one infinite polynomial you'll recognize:
 for any fixed number $-1 < x < 1$ we have the series convergence
-\[ \frac{1}{1-x} = 1 + x + x^2 + \dots \]
+\[ \frac{1}{1-x} = 1 + x + x^2 + \cdots \]
 by the geometric series formula.
 
 Let's pretend we didn't see this already in
@@ -34,7 +35,7 @@ So, we instead have a smooth function $f \colon (-1,1) \to \RR$ by
 \[ f(x) = \frac{1}{1-x}. \]
 Suppose we wanted to pretend that it was equal to
 an ``infinite polynomial'' near the origin, that is
-\[ (1-x)\inv = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + \dots. \]
+\[ (1-x)\inv = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + \cdots. \]
 How could we find that polynomial,
 if we didn't already know?
 
@@ -43,7 +44,7 @@ we obviously want $a_0 =1$.
 
 We have derivatives, so actually,
 we can then differentiate both sides to obtain that
-\[ (1-x)^{-2} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3. \]
+\[ (1-x)^{-2} = a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + \cdots. \]
 If we now set $x = 0$, we get $a_1 = 1$.
 In fact, let's keep taking derivatives and see what we get.
 \begin{alignat*}{8}
@@ -56,11 +57,11 @@ In fact, let's keep taking derivatives and see what we get.
 \end{alignat*}
 If we set $x=0$ we find $1 = a_0 = a_1 = a_2 = \dots$
 which is what we expect;
-the geometric series $\frac{1}{1-x} = 1 + x + x^2 + \dots$.
+the geometric series $\frac{1}{1-x} = 1 + x + x^2 + \cdots$.
 And so actually taking derivatives was enough to get the right claim!
 
 \section{Power series}
-\prototype{$\frac{1}{1-z} = 1 + z + z^2 + \dots$, which converges on $(-1,1)$.}
+\prototype{$\frac{1}{1-z} = 1 + z + z^2 + \cdots$, which converges on $(-1,1)$.}
 Of course this is not rigorous,
 since we haven't described what the right-hand side is,
 much less show that it can be differentiated term by term.
@@ -69,7 +70,7 @@ So we define the main character now.
 \begin{definition}
 	A \vocab{power series} is a sum of the form
 	\[ \sum_{n = 0}^\infty a_n z^n
-		= a_0 + a_1 z + a_2 z^2 + \dots \]
+		= a_0 + a_1 z + a_2 z^2 + \cdots \]
 	where $a_0$, $a_1$, \dots\ are real numbers,
 	and $z$ is a variable.
 \end{definition}
@@ -87,7 +88,7 @@ So I can ask, when does this series converge?
 It terms out there is a precise answer for this.
 
 \begin{definition}
-	Given a power series $\sum_{n=0}^{\infty} a_n z_n$,
+	Given a power series $\sum_{n=0}^{\infty} a_n z^n$,
 	the \vocab{radius of convergence} $R$ is defined
 	by the formula
 	\[ \frac 1R = \limsup_{n \to \infty} \left\lvert a_n \right\rvert^{1/n}. \]
@@ -96,8 +97,7 @@ It terms out there is a precise answer for this.
 \end{definition}
 \begin{theorem}
 	[Cauchy-Hadamard theorem]
-	Let $\sum_{n=0}^{\infty} a_n z^n$
-	be a power series with radius of convergence $R$.
+	Let $\sum_{n=0}^{\infty} a_n z^n$ be a power series with radius of convergence $R$.
 	Let $h$ be a real number, and consider the infinite series
 	\[ \sum_{n=0}^\infty a_n h^n \]
 	of real numbers.
@@ -116,7 +116,7 @@ It terms out there is a precise answer for this.
 \end{remark}
 \begin{example}
 	[$\sum z^n$ has radius $1$]
-	Consider the geometric series $\sum_{n} z^n = 1 + z + z^2 + \dots$.
+	Consider the geometric series $\sum_{n} z^n = 1 + z + z^2 + \cdots$.
 	Since $a_n = 1$ for every $n$, we get $R = 1$,
 	which is what we expected.
 \end{example}
@@ -171,13 +171,11 @@ As promised, differentiation works exactly as you want.
 
 \begin{theorem}
 	[Differentiation works term by term]
-	Let $\sum_{n \ge 0} a_n z^n$ be a power series
-	with radius of convergence $R > 0$,
+	Let $\sum_{n \ge 0} a_n z^n$ be a power series with radius of convergence $R > 0$,
 	and consider the corresponding function
 	\[ f \colon (-R,R) \to \RR \quad\text{by}\quad
 		f(x) = \sum_{n \ge 0} a_n x^n. \]
-	Then all the derivatives of $f$ exist and
-	are given by power series
+	Then all the derivatives of $f$ exist and are given by power series
 	\begin{align*}
 		f'(x) &= \sum_{n \ge 1} n a_n x^{n-1} \\
 		f''(x) &= \sum_{n \ge 2} n(n-1) a_n x^{n-2} \\
@@ -190,16 +188,14 @@ As promised, differentiation works exactly as you want.
 	Also omitted.
 	The right way to prove it is to define the notion ``converges uniformly'',
 	and strengthen Cauchy-Hadamard to have this as a conclusion as well.
-	However, we won't use this later.
 \end{proof}
 
 \begin{corollary}
 	[A description of power series coefficients]
-	Let $\sum_{n \ge 0} a_n z^n$ be a power series
-	with radius of convergence $R > 0$,
+	Let $\sum_{n \ge 0} a_n z^n$ be a power series with radius of convergence $R > 0$,
 	and consider the corresponding function $f(x)$ as above.
 	Then
-	\[ a_n = \frac{f^{(n)}(x)}{n!}. \]
+	\[ a_n = \frac{f^{(n)}(0)}{n!}. \]
 \end{corollary}
 \begin{proof}
 	Take the $n$th derivative and plug in $x=0$.
@@ -213,8 +209,7 @@ we now have a way to do this process the other way:
 suppose that $f \colon U \to \RR$ is a function.
 Can we express it as a power series?
 
-Functions for which this \emph{is} true
-are called analytic.
+Functions for which this \emph{is} true are called analytic.
 \begin{definition}
 	A function $f \colon U \to \RR$ is \vocab{analytic} at
 	the point $p \in U$
@@ -222,8 +217,7 @@ are called analytic.
 	and a power series $\sum_n a_n z^n$ such that
 	\[ f(x) = \sum_{n \ge 0} a_n (x-p)^n \]
 	for any $x \in V$.
-	As usual, the whole function is analytic
-	if it is analytic at each point.
+	As usual, the whole function is analytic if it is analytic at each point.
 \end{definition}
 \begin{ques}
 	Show that if $f$ is analytic, then it's smooth.
@@ -258,37 +252,33 @@ we give this a name.
 		is \emph{not} analytic.
 		Indeed, suppose for contradiction it was.
 		As all the derivatives are zero,
-		its Taylor series would be $0 + 0x + 0x^2 + \dots$.
+		its Taylor series would be $0 + 0x + 0x^2 + \cdots$.
 		This Taylor series does \emph{converge}, but not to the right value ---
 		as $f(\eps) > 0$ for any $\eps > 0$, contradiction.
 	\end{enumerate}
 \end{example}
 
-\begin{theorem}
-	[Analytic iff Taylor series has positive radius]
-	Let $f \colon U \to \RR$ be a smooth function.
-	Then $f$ is analytic if and only if for any point $p \in U$,
-	its Taylor series at $p$ has positive radius of convergence.
-\end{theorem}
+Example (b) shows that if you have a function $f \colon \RR \to \RR$,
+then even knowing $f$ is smooth and the full Taylor series at $p$,
+it's still impossible to recover any other values of $f$
+or deduce that $f$ is analytic in any interval containing $p$.
 
-\begin{example}
-	It now follows that $f(x) = \sin(x)$ is analytic.
-	To see that, we can compute
-	\begin{align*}
-		f(0) &= \sin 0 = 0 \\
-		f'(0) &= \cos 0 = 1 \\
-		f''(0) &= -\sin 0 = 0 \\
-		f^{(3)}(0) &= -\cos 0 = -1 \\
-		f^{(4)}(0) &= \sin 0 = 0 \\
-		f^{(5)}(0) &= \cos 0 = 1 \\
-		f^{(6)}(0) &= -\sin 0 = 0 \\
-		&\vdotswithin=
-	\end{align*}
-	and so by continuing the pattern
-	(which repeats every four) we find the Taylor series is
-	\[ z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \dots \]
-	which is seen to have radius of convergence $R = \infty$.
-\end{example}
+However, it's at least true that:
+\begin{proposition}
+	[Analytic at one point implies analytic on an interval]
+	Let $f \colon \RR \to \RR$ be smooth, and let $p \in \RR$ be a point in the domain.
+	Suppose that
+	\begin{itemize}
+		\ii the Taylor series of $f$ at $p$ has radius of convergence $R > 0$; \emph{and}
+		\ii that Taylor series actually does converge to the value $f(x)$
+		for every input $x \in (p-R,p+R)$ within the radius of convergence.
+	\end{itemize}
+	Then $f$ is analytic on $(p-R, p+R)$.
+	\label{prop:taylor_series_are_analytic}
+\end{proposition}
+This result is nontrivial because \emph{a priori} we only know $f$ is analytic at $p$;
+the result extends that to being analytic on the radius of convergence if $R > 0$.
+We'll use it for $\exp$ in just a moment, which is actually defined by a power series.
 
 Like with differentiable functions:
 \begin{proposition}
@@ -296,7 +286,7 @@ Like with differentiable functions:
 	The sums, products, compositions, nonzero quotients
 	of analytic functions are analytic.
 \end{proposition}
-The upshot of this is is that most of your usual
+The upshot of this is that most of your usual
 functions that occur in nature,
 or even artificial ones like $f(x) = e^x + x \sin(x^2)$,
 will be analytic, hence describable locally by Taylor series.
@@ -305,14 +295,14 @@ will be analytic, hence describable locally by Taylor series.
 We can actually give a definition of $e^x$ using the tools we have now.
 
 \begin{definition}
-	We define the map $\exp \colon \RR \to \RR$ by
-	using the following power series,
+	We define the map $\exp \colon \RR \to \RR$ by using the following power series,
 	which has infinite radius of convergence:
 	\[ \exp(x) = \sum_{n \ge 0} \frac{x^n}{n!}. \]
 	We then define Euler's constant as $e = \exp(1)$.
 \end{definition}
 \begin{ques}
 	Show that under this definition, $\exp' = \exp$.
+	Also conclude from \Cref{prop:taylor_series_are_analytic} that $\exp$ is analytic.
 \end{ques}
 
 We are then settled with:
@@ -351,16 +341,14 @@ We are then settled with:
 \begin{proof}
 	First \[ \exp(x) = \exp(x/2)^2 \ge 0 \]
 	which shows $\exp$ is nonnegative.
-	Also, $1 = \exp(0) = \exp(x) \exp(-x)$ implies $\exp(x) \neq 0$
-	for any $x$, proving (a).
+	Also, $1 = \exp(0) = \exp(x) \exp(-x)$ implies $\exp(x) \neq 0$ for any $x$, proving (a).
 
 	(b) is just since $\exp'$ is strictly positive (racetrack principle).
 \end{proof}
 
 The log function then comes after.
 \begin{definition}
-	We may define $\log \colon \RR_{>0} \to \RR$
-	to be the inverse function of $\exp$.
+	We may define $\log \colon \RR_{>0} \to \RR$ to be the inverse function of $\exp$.
 \end{definition}
 Since its derivative is $1/x$ it is smooth;
 and then one may compute its coefficients to show it is analytic.
@@ -381,8 +369,7 @@ with essentially no modifications.
 	The series will converge if $|z| < R$.
 	\ii Differentiation still works great.
 	(The definition of the derivative is unchanged.)
-	\ii Analytic still works great for functions
-	$f \colon U \to \CC$, with $U \subseteq \CC$ open.
+	\ii Analytic still works great for functions $f \colon U \to \CC$, with $U \subseteq \CC$ open.
 \end{itemize}
 In particular, we can now even define complex exponentials,
 giving us a function \[ \exp \colon \CC \to \CC \]
@@ -394,9 +381,7 @@ so that $\log a$ is defined, though.
 So this $i^i$ issue is still there.)
 
 However, if one tries to study calculus for complex functions
-as we did for the real case,
-in addition to most results carrying over,
-we run into a huge surprise:
+as we did for the real case, in addition to most results carrying over, we run into a huge surprise:
 \begin{quote}
 	\itshape
 	If $f \colon \CC \to \CC$ is differentiable,
@@ -404,8 +389,7 @@ we run into a huge surprise:
 \end{quote}
 And this is just the beginning of the nearly unbelievable
 results that hold for complex analytic functions.
-But this is the part on real analysis,
-so you will have to read about this later!
+But this is the part on real analysis, so you will have to read about this later!
 
 \section{\problemhead}
 
@@ -432,9 +416,9 @@ so you will have to read about this later!
 	Let $f \colon [a,b] \to \RR$ be continuous
 	and $n+1$ times differentiable on $(a,b)$.
 	Define
-	\[ P_n = \sum_{k=0}^n \frac{f^{(k)}(b)}{k!} \cdot (b-a)^k. \]
+	\[ P_n = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} \cdot (b-a)^k. \]
 	Prove that there exists $\xi \in (a,b)$ such that
-	\[ f^{(n)}(\xi) = (n+1)! \cdot \frac{f(b) - P_n}{(b-a)^{n+1}}. \]
+	\[ f^{(n+1)}(\xi) = (n+1)! \cdot \frac{f(b) - P_n}{(b-a)^{n+1}}. \]
 	This generalizes the mean value theorem
 	(which is the special case $n = 0$, where $P_0 = f(a)$).
 	\begin{hint}
@@ -456,4 +440,17 @@ so you will have to read about this later!
 	\begin{hint}
 		Use Taylor's theorem.
 	\end{hint}
+\end{problem}
+
+\begin{problem}
+	\kurumi
+	Let $f \colon \RR \to \RR$ be smooth.
+	Suppose that for every point $p$,
+	the Taylor series of $f$ at $p$ has positive radius of convergence.
+	Prove that there exists at least one point at which $f$ is analytic.
+	\begin{sol}
+		See \url{https://mathoverflow.net/q/81613}
+		and in particular
+		\url{https://web.archive.org/web/20161009194815/http://mathforum.org/kb/message.jspa?messageID=387148}.
+	\end{sol}
 \end{problem}

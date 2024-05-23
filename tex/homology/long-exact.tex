@@ -1,4 +1,5 @@
 \chapter{The long exact sequence}
+\label{ch:long_exact_sequence}
 In this chapter we introduce the key fact about chain complexes that will allow us to compute
 the homology groups of any space: the so-called ``long exact sequence''.
 
@@ -27,23 +28,29 @@ It is said to be \vocab{short exact} if \emph{each row} of the diagram below is 
 	& \vdots \ar[d, "\partial_A"] & \vdots \ar[d, "\partial_B"] & \vdots \ar[d, "\partial_C"] & \\
 	0 \ar[r]
 		& A_{n+1} \ar[hook, r, "f_{n+1}"] \ar[d, "\partial_A"]
-		& B_{n+1} \ar[r, two heads, "g_{n+1}"] \ar[d, "\partial_B"]
+		& B_{n+1} \ar[r, surjective head, "g_{n+1}"] \ar[d, "\partial_B"]
 		& C_{n+1} \ar[r] \ar[d, "\partial_C"]
 		& 0 \\
 	0 \ar[r]
 		& A_n \ar[hook, r, "f_n"] \ar[d, "\partial_A"]
-		& B_n \ar[r, two heads, "g_n"] \ar[d, "\partial_B"]
+		& B_n \ar[r, surjective head, "g_n"] \ar[d, "\partial_B"]
 		& C_n \ar[r] \ar[d, "\partial_C"]
 		& 0 \\
 	0 \ar[r]
 		& A_{n-1} \ar[hook, r, "f_{n-1}"] \ar[d, "\partial_A"]
-		& B_{n-1} \ar[r, two heads, "g_{n-1}"] \ar[d, "\partial_B"]
+		& B_{n-1} \ar[r, surjective head, "g_{n-1}"] \ar[d, "\partial_B"]
 		& C_{n-1} \ar[r] \ar[d, "\partial_C"]
 		& 0 \\
 	& \vdots & \vdots & \vdots
 \end{tikzcd}
 \end{center}
 \end{definition}
+
+\begin{moral}
+	This basically means $C_\bullet = B_\bullet / A_\bullet$, for suitable definition of
+	$/$ on chain complexes.
+\end{moral}
+This agrees with the definition in \Cref{sec:exact_sequences}.
 
 \begin{example}
 	[Mayer-Vietoris short exact sequence and its augmentation]
@@ -52,7 +59,7 @@ It is said to be \vocab{short exact} if \emph{each row} of the diagram below is 
 	For each $n$ consider
 	\begin{center}
 	\begin{tikzcd}[row sep=tiny]
-		C_n(U \cap V) \ar[r, hook] & C_n(U) \oplus C_n(V) \ar[r, two heads] & C_n(U + V) \\
+		C_n(U \cap V) \ar[r, hook] & C_n(U) \oplus C_n(V) \ar[r, surjective head] & C_n(U + V) \\
 		c \ar[r, mapsto] & (c, -c) \\
 		& (c, d) \ar[r, mapsto] & c + d
 	\end{tikzcd}
@@ -71,8 +78,8 @@ It is said to be \vocab{short exact} if \emph{each row} of the diagram below is 
 	\begin{center}
 	\begin{tikzcd}[row sep=large]
 		0 \ar[r]
-		& C_0(U \cap V) \ar[r, hook] \ar[d, "\eps"', two heads]
-			& C_0(U) \oplus C_0(V) \ar[r, two heads] \ar[d, "\eps \oplus \eps"', two heads]
+		& C_0(U \cap V) \ar[r, hook] \ar[d, "\eps"', surjective head]
+			& C_0(U) \oplus C_0(V) \ar[r, surjective head] \ar[d, "\eps \oplus \eps"', surjective head]
 			& C_0(U+V) \ar[r] \ar[d, "\eps"']
 			& 0 \\
 		0 \ar[r]
@@ -105,8 +112,8 @@ It is said to be \vocab{short exact} if \emph{each row} of the diagram below is 
 	\begin{center}
 	\begin{tikzcd}
 		0 \ar[r]
-		& C_0(A) \ar[r, hook] \ar[d, "\eps", two heads]
-			& C_0(X) \ar[r, two heads] \ar[d, "\eps", two heads]
+		& C_0(A) \ar[r, hook] \ar[d, "\eps", surjective head]
+			& C_0(X) \ar[r, surjective head] \ar[d, "\eps", surjective head]
 			& C_0(X,A) \ar[r]
 			& 0 \\
 		0 \ar[r] & \ZZ \ar[r, "\id"'] & \ZZ \ar[r] & 0 \ar[r] & 0.
@@ -162,8 +169,8 @@ taking each $H_{n+1}(C_\bullet)$ to $H_n(A_\bullet)$.
 	Recall that $H_n$ is ``cycles modulo boundaries'', and consider the sub-diagram
 	\begin{center}
 	\begin{tikzcd}
-		& B_n \ar[r, "g_n", two heads] \ar[d, "\partial_B"'] & C_n \ar[d, "\partial_C"] \\
-		A_{n-1} \ar[r, "f_{n-1}"', hook] & B_{n-1} \ar[r, "g_{n-1}"', two heads] & C_{n-1}
+		& B_n \ar[r, "g_n", surjective head] \ar[d, "\partial_B"'] & C_n \ar[d, "\partial_C"] \\
+		A_{n-1} \ar[r, "f_{n-1}"', hook] & B_{n-1} \ar[r, "g_{n-1}"', surjective head] & C_{n-1}
 	\end{tikzcd}
 	\end{center}
 	We need to take every cycle in $C_n$ to a cycle in $A_{n-1}$.
@@ -414,6 +421,7 @@ actually understand the maps in question to complete the solution.
 
 \begin{proposition}
 	[Homology groups of the torus]
+	\label{prop:homology_torus}
 	Let $X = S^1 \times S^1$ be the torus.
 	Then
 	\[
@@ -476,17 +484,17 @@ actually understand the maps in question to complete the solution.
 	We first consider the segment
 	\[
 		\dots \to
-		\underbrace{\wt H_2(U) \oplus \wt H_2(V)}_{=0} \to \wt H_2(X) \xhookrightarrow{\delta}
+		\underbrace{\wt H_2(U) \oplus \wt H_2(V)}_{=0} \to \wt H_2(X) \xhookrightarrow{\partial}
 		\underbrace{\wt H_1(U \cap V)}_{\cong \ZZ \oplus \ZZ} \xrightarrow{\phi}
 		\underbrace{\wt H_1(U) \oplus \wt H_1(V)}_{\cong \ZZ \oplus \ZZ} \to \dots
 	\]
 	Unfortunately, this time it's not immediately clear what $\wt H_2(X)$ because
 	we only have one zero at the left.
-	In order to do this, we have to actually figure out what the maps $\delta$ and $\phi$ look like.
+	In order to do this, we have to actually figure out what the maps $\partial$ and $\phi$ look like.
 	Note that, as we'll see, $\phi$ isn't an isomorphism even though the groups are isomorphic.
 
-	The presence of the zero term has allowed us to make the connecting map $\delta$ injective.
-	First, $\wt H_2(X)$ is isomorphic to the image of of $\delta$, which is
+	The presence of the zero term has allowed us to make the connecting map $\partial$ injective.
+	First, $\wt H_2(X)$ is isomorphic to the image of $\partial$, which is
 	exactly the kernel of the arrow $\phi$ inserted.
 	To figure out what $\ker \phi$ is, we have to think back to how the map
 	$C_\bullet(U \cap V) \to C_\bullet(U) \oplus C_\bullet(V)$ was constructed:
@@ -500,7 +508,39 @@ actually understand the maps in question to complete the solution.
 	(To clarify: $U \cap V$ consists of two ``wristbands'';
 	$z_i$ wraps around the $i$th one once.)
 	Moreover, let $\alpha_U$ denote a generator of $\wt H_1(U) \cong \ZZ$,
-	and $\alpha_V$ a generator of $H_2(U) \cong \ZZ$.
+	and $\alpha_V$ a generator of $\wt H_1(V) \cong \ZZ$.
+
+	The elements are depicted below:
+	\begin{center}
+	\begin{asy}
+		pair A = (0,0);
+		pair B = (1,0);
+		pair C = (1,1);
+		pair D = (0,1);
+		fill(box((0.2,0),(0.8,1)), orange+opacity(0.2));
+		fill(box(A,(0.3,1)), heavygreen+opacity(0.2));
+		fill(box((0.7,0),C), heavygreen+opacity(0.2));
+
+		draw( (0.25,1)--(0.25,0), MidArrow, L=Label("$z_1$", align=E*2.5, Relative(0.67)));
+		draw( (0.5,1)--(0.5,0), MidArrow, L=Label("$\alpha_U$", align=E, Relative(0.67)));
+		draw( (0.72,1)--(0.72,0), MidArrow, L=Label("$z_2$", align=E, Relative(0.67)));
+		draw( (0.88,1)--(0.88,0), MidArrow, L=Label("$\alpha_V$", align=E, Relative(0.67)));
+
+		draw( (0.3,0)--(0.3,1), heavygreen+dashed+1.2);
+		draw( (0.7,0)--(0.7,1), heavygreen+dashed+1.2);
+		draw( (0.2,0)--(0.2,1), orange+dashed+1.2);
+		draw( (0.8,0)--(0.8,1), orange+dashed+1.2);
+
+		draw(A--B, red+1.5, MidArrow);
+		draw(B--C, blue+1.5, MidArrow);
+		draw(D--C, red+1.5, MidArrow);
+		draw(A--D, blue+1.5, MidArrow);
+	\end{asy}
+	\end{center}
+	Note that $z_1$, $z_2$, $\alpha_U$, $\alpha_V$ are
+	elements of the homology group, so you can move the paths around a bit --- for instance, as
+	elements of $\wt H_1(U)$, the chain drawn as $z_1$ and $\alpha_U$ represents the same element.
+
 	Then we have that
 	\[ z_1 \mapsto (\alpha_U, -\alpha_V) \qquad\text{and}\qquad z_2 \mapsto (\alpha_U, -\alpha_V). \]
 	(The signs may differ on which direction you pick for the generators;
@@ -509,7 +549,7 @@ actually understand the maps in question to complete the solution.
 	\[ \phi = \begin{bmatrix} 1 & 1 \\ -1 & -1 \end{bmatrix}. \]
 	And we observe $\phi(z_1 - z_2) = 0$, meaning this map has nontrivial kernel!
 	That is, \[ \ker\phi = \left< z_1 - z_2 \right> \cong \ZZ. \]
-	Thus, $\wt H_2(X) \cong \img \delta \cong \ker \phi \cong \ZZ$.
+	Thus, $\wt H_2(X) \cong \img \partial \cong \ker \phi \cong \ZZ$.
 	We'll also note that $\img \phi$ is the set generated by $(\alpha_U, -\alpha_V)$;
 	(in particular $\img\phi \cong \ZZ$ and the quotient by $\img\phi$ is $\ZZ$ too).
 
@@ -542,6 +582,44 @@ actually understand the maps in question to complete the solution.
 	only possibility, but we'll prove this rigorously with \Cref{lem:split_exact}.
 \end{proof}
 
+\begin{remark}
+	Earlier, we remarked (without proof) that $\pi_2(X)$ is trivial --- that is, homotopy does not
+	found any ``$2$-dimensional holes'' in the torus. Why is it that $H_2(X) \cong \ZZ$?
+
+	You may want to manually compute the nontrivial element in $H_2(X)$ using the long
+	exact sequence using the following method. Look at the long exact sequence:
+	\begin{center}
+	\begin{tikzcd}
+		\cdots \ar[r]
+			& \underbrace{H_2(U) \oplus H_2(V)}_{= 0} \ar[r]
+			& \underbrace{H_2(X)}_{\cong \ZZ} \ar[lld, "\partial"', swap] \\
+		\underbrace{H_1(U \cap V)}_{\cong \ZZ \oplus \ZZ} \ar[r, "\phi"']
+			& \underbrace{H_1(U) \oplus H_1(V)}_{\cong \ZZ \oplus \ZZ} \ar[r]
+			& \cdots
+	\end{tikzcd}
+	\end{center}
+	We wish to find some nontrivial element in $H_2(X)$ --- in order to do that, we can take an
+	element in $\ker \phi \subseteq H_1(U \cap V)$ and take its preimage under $\partial$.
+
+	For that, $z_1 - z_2$ would suffice. In order to take its preimage under $\partial$, we need to
+	recall how $\partial$ was constructed --- it was a ``left, down, left'' procedure in the
+	diagram:
+	\begin{center}
+	\begin{tikzcd}
+		& C_2(U) \oplus C_2(V) \ar[r, surjective head] \ar[d] & C_2(X) \\
+		C_1(U \cap V) \ar[r, hook] & C_1(U) \oplus C_1(V)
+	\end{tikzcd}
+	\end{center}
+	So, we find a (closed) element in $C_1(U \cap V)$ whose image under the quotient map is
+	$z_1 - z_2$, then move it ``right, up, right'' to an element in $C_2(X)$.
+
+	If you did everything correctly, the result should be \emph{the whole torus}!
+\end{remark}
+Which emphasizes the point:
+\begin{moral}
+	A ``hole'' detected by homology need not look like the interior of $S^n$.
+\end{moral}
+
 Note that the previous example is of a different attitude than the previous ones,
 because we had to figure out what the maps in the long exact sequence actually were
 to even compute the groups.
@@ -560,9 +638,9 @@ Finally, to fully justify the last step, we present:
 		\ii There is an isomorphism from $B$ to $A \oplus C$ such that the diagram
 		\begin{center}
 		\begin{tikzcd}
-			&& B \ar[rd, "g", two heads] \ar[dd, leftrightarrow, "\cong"] \\
+			&& B \ar[rd, "g", surjective head] \ar[dd, leftrightarrow, "\cong"] \\
 			0 \ar[r] & A \ar[ru, hook, "f"] \ar[rd, hook] && C \ar[r] & 0 \\
-			&& A \oplus C \ar[ru, two heads]
+			&& A \oplus C \ar[ru, surjective head]
 		\end{tikzcd}
 		\end{center}
 		commutes. (The maps attached to $A \oplus C$ are the obvious ones.)
@@ -691,7 +769,7 @@ we were done.
 	\end{hint}
 	\begin{sol}
 		Use the short exact sequence
-		\[ 0 \to C_\bullet(A,B) \to C_\bullet(C,B) \to C_\bullet(C,A) \to 0 \]
+		\[ 0 \to C_\bullet(B,A) \to C_\bullet(X,A) \to C_\bullet(X,B) \to 0 \]
 		of chain complexes.
 	\end{sol}
 \end{sproblem}

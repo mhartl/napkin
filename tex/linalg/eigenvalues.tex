@@ -1,4 +1,5 @@
 \chapter{Eigen-things}
+\label{ch:eigen_things}
 This chapter will develop the theory of eigenvalues and eigenvectors,
 the so-called ``Jordan canonical form''.
 (Later on we will use it to
@@ -34,7 +35,7 @@ i.e.\ a \vocab{diagonal matrix} of the form
 \]
 These maps are more general.
 Indeed, you can, for example, compute $T^{100}$ in a heartbeat:
-the map sends $e_1 \to \lambda_1^{100} e_1$.
+the map sends $e_i \to \lambda_i^{100} e_i$.
 (Try doing that with an arbitrary $n \times n$ matrix.)
 
 Of course, most linear maps are probably not that nice.
@@ -129,9 +130,9 @@ Unfortunately, it's not exactly true that eigenvalues always exist.
 \end{example}
 
 However, it is true if we replace $k$ with an
-algebraically closed field\footnote{A field is \vocab{algebraically closed}
+algebraically closed field.\footnote{A field is \vocab{algebraically closed}
 	if all its polynomials have roots,
-	the archetypal example being $\CC$.}.
+	the archetypal example being $\CC$.}
 \begin{theorem}[Eigenvalues always exist over algebraically closed fields]
 	Suppose $k$ is an \emph{algebraically closed} field.
 	Let $V$ be a finite dimensional $k$-vector space.
@@ -532,6 +533,7 @@ we first state the ``intrinsic'' definition.
 	\end{itemize}
 	(Silly edge case: we allow ``multiplicity zero''
 	if $\lambda$ is not an eigenvalue at all.)
+  \label{def:eigen_multiplicity}
 \end{definition}
 However in practice you should just count the Jordan blocks.
 \begin{example}
@@ -565,6 +567,10 @@ To be completely explicit, here is how you think of these in practice:
 		corresponding to those blocks.
 	\end{itemize}
 \end{proposition}
+\begin{proof}
+  \Cref{def:eigen_multiplicity} was essentially chosen
+  to be a basis-free rephrasing of this proposition.
+\end{proof}
 
 \begin{ques}
 	Show that the geometric multiplicity
@@ -608,7 +614,7 @@ The next two chapters will give us a better definition.
 	\begin{enumerate}[(a)]
 		\ii Explain the name ``diagonalizable''.
 		\ii Suppose we are working over an algebraically closed field.
-		Then show that that $T$ is diagonalizable if and only if
+		Then show that $T$ is diagonalizable if and only if
 		for any $\lambda$, the geometric multiplicity of $\lambda$
 		equals the algebraic multiplicity of $\lambda$.
 	\end{enumerate}
@@ -637,12 +643,11 @@ The next two chapters will give us a better definition.
 	Suppose $T \colon \CC^{\oplus 2} \to \CC^{\oplus 2}$
 	is a linear map of $\CC$-vector spaces such that $T^{2011} = \id$.
 	Must $T$ be diagonalizable?
-	\begin{sol}
-		No, if $\zeta$ is a primitive $2011$th root of unity then
-		$T = \begin{bmatrix} \zeta & 1 \\ 0 & \zeta \end{bmatrix}$
-		is not diagonalizable (as $T - \zeta \id$ is a nonzero nilpotent)
-		but $T^{2011} = \id$ holds.
-	\end{sol}
+	\begin{hint}
+		The answer is yes.
+		In fact, the result is true if $\CC^{\oplus 2}$ is any finite-dimensional
+		$\CC$-vector space.
+	\end{hint}
 \end{problem}
 
 \begin{problem}

@@ -1,4 +1,5 @@
 \chapter{Localization}
+\label{ch:localization}
 Before we proceed on to defining an affine scheme,
 we will take the time to properly cover one more algebraic construction
 that of a \emph{localization}.
@@ -16,6 +17,13 @@ $\left\{ \frac{f}{g} \mid g(p) \neq 0 \right\}$
 and the like.
 The point is that we introduced a lot of denominators.
 Localization will give us a concise way of doing this in general.
+
+This thus also explain why the operation is called ``localization'':
+we start from a set of ``global'' functions, and get a (larger) set of functions
+that are well-defined on a ``smaller'' open set, or in an open neighborhood
+of point $p$.
+
+Of course, this is the Zariski topology, so ``small'' means ``everywhere except certain curves''.
 
 \emph{Notational note}:
 moving forward we'll prefer to denote rings by $A$, $B$, \dots,
@@ -46,7 +54,7 @@ which will give us a nice way of expressing the above:
 if $R = \CC[V]$ is the coordinate ring, then
 the above will become abbreviated to just
 \begin{align*}
-	\OO_{V}(D(g)) &= R_{g} \\
+	\OO_{V}(D(g)) &= R[g^{-1}] \\
 	\OO_{V, p} &= R_{\km} \quad \text{where } \{p\} = \VV(\km).
 \end{align*}
 The former will be pronounced
@@ -61,7 +69,7 @@ altogether and replace it with a general commutative ring $A$
 We will construct a ringed space called $X = \Spec A$,
 whose elements are \emph{prime ideals} of $A$
 and is equipped with the Zariski topology and a sheaf $\OO_X$.
-It will turn out that, in analogy to what we had before,
+It will turn out that, the right way to define the sheaf $\OO_X$ is to use localization,
 \begin{align*}
 	\OO_X(D(f)) &= A[f\inv] \\
 	\OO_{X,\kp} &= A_\kp
@@ -70,6 +78,13 @@ for any element $f \in A$ and prime ideal $\kp \in \Spec A$.
 Thus just as with complex affine varieties,
 localizations will give us a way to more or less
 describe the sheaf $\OO_X$ completely.
+
+In other words,
+\begin{moral}
+	Localization is the purely algebraic way to \emph{define} the
+	ring of regular functions on a smaller open set from the ring of ``global''
+	regular functions.
+\end{moral}
 
 \section{The definition}
 \begin{definition}
@@ -128,8 +143,10 @@ motivating forces for the construction of the affine scheme.
 	Then we have for example $\frac01 = \frac02 = \frac{12}{2} = \frac61$.
 	So we need to have $\frac01=\frac61$ which is only true
 	with the first definition.
-	Of course, if $A$ is an integral domain (and $0\notin S$)
-	then this is a moot point.
+	Of course, if $A$ is an integral domain (and $0\notin S$) then this is a moot point.
+
+	Alternatively, one can start with this simpler relation,
+	and take the transitive closure; this yields an equivalent definition.
 \end{remark}
 
 \begin{example}
@@ -172,7 +189,8 @@ one in this section, the other in the next section.
 		if we localize $\Zc{60}$ away from the element $5$,
 		we get $(\Zc{60})[1/5] \cong \Zc{12}$.
 		You should try to think about why this is the case.
-		We will see a ``geometric'' reason later.
+		We will see a ``geometric'' reason later,
+		in \Cref{sec:example_spec_Zc60}.
 	\end{enumerate}
 \end{example}
 
@@ -200,6 +218,8 @@ one in this section, the other in the next section.
 	\end{enumerate}
 \end{example}
 
+%Looking at these examples, you can also think of "localization of A away from f" as "delete 𝒱(f) from the codomain of functions in A, then extend A to include the new functions that can be defined", or equivalently "allow functions to blow up at 𝒱(f)".
+
 \begin{example}
 	[An example with zero-divisors]
 	Let $A = \CC[x,y] / (xy)$
@@ -210,6 +230,10 @@ one in this section, the other in the next section.
 	so $y = 0$ in $A$, and thus $y$ just goes away completely.
 	From this we get a ring isomorphism
 	\[ A[1/x] \cong \CC[x,1/x].\]
+
+	Later, we will be able to use our geometric intuition to ``see'' this
+	at \Cref{sec:example_spec_kxy_div_xy}, once
+	we have defined the affine scheme.
 \end{example}
 
 \section{Localization at a prime ideal}
@@ -260,7 +284,7 @@ Consequently, we give several examples in this vein.
 	\begin{enumerate}[(a)]
 		\ii We let $\km$ be the maximal ideal $(x)$ of $A = \CC[x]$.
 		Then \[ A_\km = \left\{ \frac{f(x)}{g(x)} \mid g(0) \neq 0 \right\} \]
-		consists of the Laurent polynomials.
+		consists of the Laurent series.
 
 		\ii We let $\km$ be the maximal ideal $(x,y)$ of $A = \CC[x,y]$.
 		Then \[ A_\km = \left\{ \frac{f(x,y)}{g(x,y)} \mid g(0,0) \neq 0 \right\}. \]
@@ -281,6 +305,27 @@ Consequently, we give several examples in this vein.
 		This is all rational functions, period.
 	\end{enumerate}
 \end{example}
+
+\begin{remark*}
+	[Notational philosophy]
+	To reiterate:
+	\begin{itemize}
+	\ii when localizing away from an element,
+	you allow the functions to blow up at (the vanishing set of) that element;
+	\ii when localizing at a prime,
+	you allow the functions to blow up everywhere
+	\emph{except} at (the whole vanishing set of) that prime.
+	\end{itemize}
+	Thus we see why we say the 2 notations are opposites.
+
+	Thinking of functions that ``may not blow up at the whole vanishing set''
+	can be confusing, so another (hopefully) more intuitive way to think
+	about localizing at a prime is that the function
+	must not blow up at the point corresponding to the prime ideal.
+	For example, if $\kp$ is the ideal $(y-x^2)$ in $A = \CC[x,y]$,
+	then $A_\kp$ is the set of functions that do not blow up at the
+	generic point on the parabola.
+\end{remark*}
 
 \begin{example}
 	[Arithmetic examples]
@@ -334,7 +379,7 @@ where $S$ is one of the two special cases we discussed at length:
 	[Spectrums of localizations]
 	Let $A$ be a ring.
 	\begin{enumerate}[(a)]
-		\ii If $\kp$ is a prime ideal of $A$,
+		\ii If $f$ is an element of $A$,
 		then the prime ideals of $A[1/f]$ are naturally
 		in bijection with prime ideals of $A$
 		\textbf{do not contain the element} $f$.
@@ -371,12 +416,12 @@ Anyways, here are some examples, to help cement the picture.
 	and even $(0)$ give prime ideals of $\ZZ[1/6]$.
 
 	But $(2)$ and $(3)$ no longer correspond to
-	prime ideals; in fact in $A_6$ we have $(2) = (3) = (1)$,
+	prime ideals; in fact in $\ZZ[1/6]$ we have $(2) = (3) = (1)$,
 	the whole ring.
 \end{example}
 
 \begin{example}
-	[Prime ideals of $A_{(5)}$]
+	[Prime ideals of $\ZZ_{(5)}$]
 	Suppose we localize $\ZZ$ at the prime $(5)$.
 	As we saw,
 	\[ \ZZ_{(5)} = \left\{ \frac{m}{n} \mid m,n \in \ZZ,
@@ -435,7 +480,7 @@ but for our purposes we actually only care about the prime ideals.
 \end{example}
 
 \section{Localization commutes with quotients}
-\prototype{$(\CC[xy]/(xy))[1/x] \cong \CC[x,x\inv]$.}
+\prototype{$(\CC[x,y]/(xy))[1/x] \cong \CC[x,x\inv]$.}
 While we are here, we mention a useful result from
 commutative algebra which lets us compute localizations in quotient rings,
 which are surprisingly unintuitive.

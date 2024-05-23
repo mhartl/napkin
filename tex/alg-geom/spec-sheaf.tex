@@ -5,6 +5,13 @@ We now complete our definition of $X = \Spec A$ by
 defining the sheaf $\OO_X$ on it, making it into a ringed space.
 This is done quickly in the first section.
 
+As before, our goal is:
+\begin{moral}
+	The sheaf $\OO_X$ coincides with the sheaf of regular functions on
+	affine varieties, so that we can apply our geometric intuition to $\Spec A$
+	when $A$ is an arbitrary ring.
+\end{moral}
+
 However, we will then spend the next several chapters
 trying to convince the reader to \emph{forget}
 the definition we gave, in practice.
@@ -234,7 +241,7 @@ Don't worry, this one is easier than last section.
 	[Stalks of $\Spec A$ are $A_\kp$]
 	Let $A$ be a ring and let $\kp \in \Spec A$.
 	Then \[ \OO_{\Spec A, \kp} \cong A_\kp. \]
-	In particular $X$ is a locally ringed space.
+	In particular $\Spec A$ is a locally ringed space.
 \end{theorem}
 \begin{proof}
 	Since sheafification preserved stalks,
@@ -267,7 +274,7 @@ Don't worry, this one is easier than last section.
 		= \left\{  \frac fg \mid g(0) \neq 0 \right\}. \]
 \end{example}
 \begin{example}
-	[Denominators not divisible by $x$]
+	[Denominators not divisible by $x$ or $y$]
 	Let $X = \Spec \CC[x,y]$ and let $\km = (x,y)$ be the origin.
 	Then
 	\[ \CC[x,y]_{(x,y)}
@@ -298,7 +305,7 @@ Now, you might recall that I pressed the point of view
 that a germ might be thought of as an ``enriched value''.
 Then it makes sense that if you know the germ of a section $f$ at
 a point $\km$ --- i.e., you know the ``enriched value'' ---
-then you should be able to value as well.
+then you should be able to compute its value as well.
 What this means is that we ought to have some map
 \[ A_\km \to A/\km \]
 sending germs to their associated values.
@@ -319,7 +326,7 @@ This notation is about to get really terrible, but bear with me.
 	Then the localization $A_\kp$ has exactly one maximal ideal,
 	given explicitly by
 	\[ \kp A_\kp =
-		\left\{ \frac fg \mid f \in \kp \; g \notin \kp \right\}. \]
+		\left\{ \frac fg \mid f \in \kp, \; g \notin \kp \right\}. \]
 \end{theorem}
 The ideal $\kp A_\kp$ thus captures the idea
 of ``germs vanishing at $\kp$''.\footnote{The notation $\kp A_\kp$ really means
@@ -380,7 +387,7 @@ Thus what we find is that:
 Okay, we can write down a proof of the theorem now.
 \begin{proof}
 	[Proof of \Cref{thm:stalks_local_ring}]
-	One may check set $I = \kp A_\kp$ is an ideal of $A_\kp$.
+	One may check that the set $I = \kp A_\kp$ is an ideal of $A_\kp$.
 	Moreover, $1 \notin I$, so $I$ is proper.
 
 	To prove it is maximal and unique,
@@ -404,7 +411,7 @@ Even more generally:
 	consisting of the germs vanishing at $p$.
 \end{moral}
 
-\begin{example}[Local rings in non-algebaric geometry sheaves]
+\begin{example}[Local rings in non-algebraic geometry sheaves]
 Let's go back to the example of $X = \RR$ and $\SF(U)$ the smooth functions,
 and consider the stalk $\SF_{p}$, where $p \in X$.
 Define the ideal $\km_p$ to be the set of germs $(s,U)$ for which $s(p) = 0$.
@@ -467,7 +474,7 @@ Then the following is a special case of
 	can also be described as $\Frac(A/\kp)$.
 \end{theorem}
 So for example, if $A = \CC[x,y]$ and $\kp = (x,y)$,
-then $A/\kp = \CC$ and $\Frac(A_\kp) = \Frac(\CC) = \CC$, as we expected.
+then $A/\kp = \CC$ and $\Frac(A/\kp) = \Frac(\CC) = \CC$, as we expected.
 In practice, $\Frac(A/\kp)$ is probably the easier way
 to compute $\kappa(\kp)$ for any prime ideal $\kp$.
 
@@ -576,7 +583,7 @@ it's likely to be worth reading even before attempting these problems.
 	\begin{hint}
 		$k[x,y] \times k[z,z\inv]$.
 	\end{hint}
-	\begin{soln}
+	\begin{sol}
 		Let $V = D(x) \cup D(y) \subset U$ denote the punctured plane,
 		so its complement $D(z)$ looks like a punctured line.
 		Then $V \cap D(z) = \varnothing$ and the following diagram
@@ -595,7 +602,7 @@ it's likely to be worth reading even before attempting these problems.
 		On the other hand $\OO_X(V) = k[x,y]$ as shown in \S4.4.1 of Vakil.
 		So
 		\[ \OO_X(U) = k[x,y] \times k[z,z\inv]. \]
-	\end{soln}
+	\end{sol}
 \end{problem}
 
 \begin{problem}
@@ -615,6 +622,6 @@ it's likely to be worth reading even before attempting these problems.
 
 \begin{problem}
 	Let $A$ be a ring, and $\km$ a maximal ideal.
-	Consider $\km$ as point of $\Spec A$
+	Consider $\km$ as a point of $\Spec A$.
 	Show that $\kappa(\km) \cong A/\km$.
 \end{problem}

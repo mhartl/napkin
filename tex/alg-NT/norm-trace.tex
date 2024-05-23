@@ -1,5 +1,7 @@
 \chapter{The ring of integers}
+\label{ch:ring_of_integers}
 \section{Norms and traces}
+\label{sec:norms_traces}
 \prototype{$a+b\sqrt2$ as an element of $\QQ(\sqrt2)$ has norm $a^2-2b^2$ and trace $2a$.}
 Remember when you did olympiads and we had like $a^2+b^2$ was the ``norm'' of $a+bi$?
 Cool, let me tell you what's actually happening.
@@ -78,6 +80,18 @@ For a ``generic'' element of $K$, we expect $k = 1$.
 
 	Nicely, the formula $a^2-2b^2$ and $2a$ also works when $b=0$.
 \end{example}
+\begin{example}[{Norm of $a+b\sqrt[3] 2+c \sqrt[3] 4$}]
+	Let $\alpha = a+b\sqrt[3] 2+c\sqrt[3] 4 \in \QQ(\cbrt 2) = K$.
+	As above, if $b \neq 0$ or $c \neq 0$, then $\alpha$ and $K$ have the
+	same degree $3$.
+	The conjugates of $\alpha$ are $a+b\sqrt[3] 2 \omega+c\sqrt[3] 4 \omega^2$
+	and $a+b\sqrt[3] 2 \omega^2+c\sqrt[3] 4 \omega$,
+	and we can compute $\Norm_{K/\QQ}(\alpha) = a^3 + 2b^3 + 4c^3 - 6abc$ and
+	$\Tr_{K/\QQ}(\alpha) = 3a$.
+
+	Note that in this case the conjugates of $\alpha$ does not
+	lie in the field $K$!
+\end{example}
 Of importance is:
 \begin{proposition}[Norms and traces are rational integers]
 	If $\alpha$ is an algebraic integer, its norm and trace
@@ -91,6 +105,18 @@ That's great, but it leaves a question unanswered:
 why is the norm multiplicative?
 To do this, I have to give a new definition of norm and trace.
 
+\begin{remark}
+	\label{remark:norm_equal_product_embeddings}
+	Another way to automatically add the ``corrective factor'' is to use the
+	embeddings of $K$ into $\CC$.
+
+	As we will see later, in \Cref{thm:n_embeddings}, there are exactly
+	$d=\deg K$ embeddings of $K$ into $\CC$, say $\sigma_1, \dots, \sigma_d$.
+	Then,
+	$\Tr_{K/\QQ}(\alpha) = \sum_{i=1}^d \sigma_i(\alpha)$ and
+	$\Norm_{K/\QQ}(\alpha) = \prod_{i=1}^d \sigma_i(\alpha)$.
+\end{remark}
+
 \begin{theorem}[Morally correct definition of norm and trace]
 	Let $K$ be a number field of degree $n$, and let $\alpha \in K$.
 	Let $\mu_\alpha \colon K \to K$ denote the map \[ x \mapsto \alpha x \]
@@ -101,6 +127,12 @@ To do this, I have to give a new definition of norm and trace.
 		\ii the trace of $\alpha$ equals the trace $\Tr \mu_\alpha$.
 	\end{itemize}
 \end{theorem}
+The definition of the determinant has an obvious geometrical interpretation:
+viewing $K \cong \QQ^n$ as a vector space, the determinant measures how much $\QQ^n$ is
+stretched when multiplied by $\alpha$.
+That is, given a parallelepiped with volume $v$ in $\QQ^n$, it will be transformed to one with
+volume $|\Norm(\alpha)| v$ under the transformation $\mu_\alpha$.
+
 Since the trace and determinant don't depend on the choice of basis,
 you can pick whatever basis you want
 and use whatever definition you got in high school.
@@ -285,6 +317,7 @@ In fact, we can do better:
 
 The theorem holds true more generally.
 \begin{theorem}[$K = \QQ \cdot \OO_K$]
+	\label{thm:rationalize_denom}
 	Let $K$ be a number field, and let $x \in K$ be any element.
 	Then there exists an integer $n$ such that $nx \in \OO_K$;
 	in other words, \[ x = \frac 1n \alpha \] for some $\alpha \in \OO_K$.
@@ -373,35 +406,7 @@ We claim that in fact, the general picture looks exactly like this.
 	\label{thm:OK_free_Z_module}
 \end{theorem}
 
-\begin{proof}
-	TODO: add this in.
-	(Originally, there was an incorrect proof;
-	the mistake was pointed out 2020-02-12 on
-	\url{https://math.stackexchange.com/q/3543641/229197}
-	and I hope to supply a correct one soon.)
-%	This is a kind of fun proof, so it may be worth
-%	trying to work out yourself before reading it.
-%
-%	Pick a $\QQ$-basis of $\alpha_1$, \dots, $\alpha_n$ of $K$ and WLOG
-%	the $\alpha_i$ are in $\OO_K$ by scaling.
-%
-%	Consider $\alpha \in \OO_K$,
-%	and write $\alpha = c_1\alpha_1 + \dots + c_n\alpha_n$.
-%	We will try to bound the denominators of $c_i$.
-%	Look at $\Norm(\alpha) = \Norm(c_1\alpha_1 + \dots + c_n\alpha_n)$.
-%
-%	If we do a giant norm computation, we find that $\Norm(\alpha)$
-%	is a polynomial in the $c_i$ with fixed coefficients.
-%	(For example, $\Norm(c_1 + c_2\sqrt 2) = c_1^2 - 2c_2^2$, say.)
-%	But $\Norm(\alpha)$ is an \emph{integer}, so the denominators of the $c_i$
-%	have to be bounded by some very large integer $N$.
-%	Thus
-%	\[ \bigoplus_i \ZZ \cdot \alpha_i \subseteq \OO_K
-%		\subseteq \frac 1N \bigoplus_i \ZZ \cdot \alpha_i.  \]
-%	The latter inclusion shows that $\OO_K$ is a subgroup
-%	of a free group, and hence it is itself free.
-%	On the other hand, the first inclusion shows it's rank $n$.
-\end{proof}
+The proof will be postponed to a later chapter.
 
 This last theorem shows that in many ways $\OO_K$ is a ``lattice'' in $K$.
 That is, for a number field $K$ we can find $\alpha_1$, \dots, $\alpha_n$
@@ -427,11 +432,35 @@ This is true for the most common examples we use:
 	\ii the cyclotomic field in \Cref{prob:ring_int_cyclotomic}.
 \end{itemize}
 Unfortunately, it is not true in general:
-the first counterexample is $\QQ(\alpha)$ for $\alpha$ a root of $X^3-X^2-2X-8$.
+the first counterexample is $K=\QQ(\alpha)$ for $\alpha$ a root of $X^3-X^2-2X-8$.
 
 We call an extension with this nice property \vocab{monogenic}.
 As we'll later see, monogenic extensions have a really nice factoring algorithm,
 \Cref{thm:factor_alg}.
+
+\begin{remark}
+	[What went wrong with $\OO_K$?]
+	As we have just mentioned above, as an abelian group, $\OO_K \cong \ZZ^3$,
+	so it's generated by finitely many elements.
+
+	In fact, $\{ 1, \alpha, \beta \}$ is a basis of $\OO_K$,
+	where $\beta=\frac{\alpha+\alpha^2}{2}$.
+	The group generated by $\{ 1, \alpha, \alpha^2 \}$ has index 2 in $\OO_K$ --
+	that is, $|\OO_K/\langle 1, \alpha, \alpha^2\rangle|=2$, and we misses
+	$\beta$.
+
+	If we try to pick $\{ 1, \beta, \beta^2 \}$ as a basis instead, again we
+	get $|\OO_K/\langle 1, \beta, \beta^2\rangle|=2$, and we misses $\alpha$.
+	If you explicitly compute it out, you can get
+	$\beta^2 = \frac{3\alpha^2 + 7\alpha}{2} + 6 = 3 \beta+2 \alpha+6$.
+
+	While this is not a proof that the extension is not monogenic, hopefully it
+	gives you a feeling of the structure of $\OO_K$.
+
+	% TODO is it true that, there exist some \alpha and integers c_2,
+	% \dots, c_{n-1} such that \OO_K is generated by {1, \alpha, \alpha^2/c_2,
+	% \dots, \alpha^{n-1}/c_{n-1}}?
+\end{remark}
 
 \section{\problemhead}
 

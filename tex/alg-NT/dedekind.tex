@@ -1,4 +1,5 @@
 \chapter{Unique factorization (finally!)}
+\label{ch:unique_factorization}
 Took long enough.
 
 \section{Motivation}
@@ -84,7 +85,7 @@ In this chapter we'll develop this theory of unique factorization in full genera
 \end{remark}
 
 \section{Ideal arithmetic}
-\prototype{$(x)(y) = (xy)$. In any case, think in terms of generators.}
+\prototype{$(x)(y) = (xy)$, and $(x)+(y)=(\gcd(x, y))$. In any case, think in terms of generators.}
 First, I have to tell you how to add and multiply two ideals $\ka$ and $\kb$.
 \begin{definition}
 	Given two ideals $\ka$ and $\kb$ of a ring $R$, we define
@@ -125,6 +126,17 @@ is equal to $(c) \cdot \ka$.
 So ``scaling'' and ``multiplying by principal ideals'' are the same thing.
 This is important, since we'll be using the two notions interchangeably.
 \end{remark}
+\begin{remark}
+	The addition of two ideals does not correspond to the addition of elements --- for example, $(4)+(6)=(4, 6)=(2)$, but $4+6=10$.
+
+	This is the best we can hope for --- addition of elements does not make sense for ideals --- for example, $1+1=2$ and $1+(-1)=0$, but as ideals, $(1)=(-1)$.
+
+	In fact, addition of ideal is the straightforward generalization of $\gcd$ of elements --- as you can check in the example above, $\gcd(4, 6)=2$.
+
+	Nevertheless, I hope you agree that $\ka+\kb$ is a natural notation, compared to something like $(\ka, \kb)$.
+
+	Because factorization involves \emph{multiplying}, instead of adding, the ideals together, we will not need to use the notation $\ka+\kb$ any time soon.
+\end{remark}
 
 Finally, since we want to do factorization we better have some notion of divisibility.
 So we define:
@@ -157,6 +169,12 @@ We now define a Dedekind domain as follows.
 	\emph{every nonzero prime ideal of $\mathcal A$ is in fact maximal}.
 	(The last condition is the important one.)
 \end{definition}
+
+\begin{remark}
+	Note that $\mathcal A$ is a Dedekind domain if and only if $\mathcal A = \OO_K$ for some field
+	$K$, as we will prove below. We're just defining this term for historical reasons\dots
+\end{remark}
+
 Here there's one new word I have to define for you, but we won't make much use of it.
 \begin{definition}
 	Let $R$ be an integral domain and let $K$ be its field of fractions.
@@ -193,7 +211,8 @@ First, the boring part.
 \begin{proof}
 	Boring, but here it is anyways for completeness.
 
-	Since $\OO_K \cong \ZZ^{\oplus n}$, we get that it's Noetherian.
+	Since $\OO_K \cong \ZZ^{\oplus n}$,\footnote{By \Cref{thm:OK_free_Z_module}.}
+	we get that it's Noetherian.
 
 	Now we show that $\OO_K$ is integrally closed.
 	Suppose that $\eta \in K$ is the root of some polynomial with coefficients in $\OO_K$.
@@ -202,18 +221,29 @@ First, the boring part.
 		+ \dots + \alpha_0 \]
 	where $\alpha_i \in \OO_K$. We want to show that $\eta \in \OO_K$ as well.
 
-	Well, from the above, $\OO_K[\eta]$ is finitely generated\dots
+	Well, from the above, $\OO_K[\eta]$ is finitely generated\dots\
 	thus $\ZZ[\eta] \subseteq \OO_K[\eta]$ is finitely generated.
 	So $\eta \in \ol\ZZ$, and hence $\eta \in K \cap \ol\ZZ = \OO_K$.
 \end{proof}
 Now let's do the fun part.
 We'll prove a stronger result, which will re-appear repeatedly.
 \begin{theorem}[Important: prime ideals divide rational primes]
+	\label{thm:prime_ideals_over_rational}
 	Let $\OO_K$ be a ring of integers
 	and $\kp$ a nonzero prime ideal inside it.
 	Then $\kp$ contains a rational prime $p$.
 	Moreover, $\kp$ is maximal.
 \end{theorem}
+For a concrete example, consider $(2+i) \subseteq \ZZ[i]$. In this case, $p = 5$,
+and because $p \in (2+i)$, we get that the lattice is periodic in both dimensions
+with period $5$, which implies finitely many points in $\{a+bi \mid 0 \le a, b \le 4, a, b \in \ZZ\}$
+suffices to cover all cosets modulo the ideal.
+
+The proof of the finiteness of the quotient here is closely related to the
+statement that the mesh of the lattice is finite,
+which will be covered in the next section.
+% Point is, the proof is not that tricky.
+% You just need to remember the last step is "finite integral domain imply field".
 \begin{proof}
 	Take any $\alpha \neq 0$ in $\kp$.
 	Its Galois conjugates are algebraic integers
@@ -242,12 +272,41 @@ We'll prove a stronger result, which will re-appear repeatedly.
 Since every nonzero prime $\kp$ is maximal, we now know that $\OO_K$ is a Dedekind domain.
 Note that this tricky proof is essentially inspired by the solution to \Cref{prob:dedekind_sample}.
 
+\begin{remark}
+	\label{remark:prime_ideals_are_maximal}
+	An alternative proof for the first part is:
+	because $\kp$ is an ideal, $\alpha \cdot \OO_K \subseteq \kp$, but $\alpha \cdot \OO_K$ is a
+	free $\ZZ$-module of rank $n$, so $\kp$ is squeezed between two free $\ZZ$-modules of rank $n$,
+	by \Cref{thm:fund_fg_abelian_group} we must have $\kp$ is also free of rank $n$.
+	So the quotient is finite, then use \Cref{lemma:ideal_divides_norm}.
+\end{remark}
 
 \section{Unique factorization works}
 Okay, I'll just say it now!
 \begin{moral}
 	Unique factorization works perfectly in Dedekind domains!
 \end{moral}
+
+\begin{remark}
+	[Comparison between Dedekind domain and UFD]
+	If we temporarily forget about the Noetherian and integrally closed condition, we have:
+	\begin{itemize}
+		\ii An integral domain admits unique factorization of elements if the prime elements and the irreducible elements are the same.
+		\ii An integral domain admits unique factorization of ideals if the prime ideals and the maximal ideals are the same.
+	\end{itemize}
+	Notice the similarity --- in either case, the Noetherian condition is ``merely'' to ensure that, if you keep extracting prime factors, you will terminate in a finite time.
+\end{remark}
+
+\begin{example}
+	[What went wrong if $\mathcal A$ is not integrally closed?]
+	Consider $\mathcal A = 2\ZZ$, which is an ideal of $\ZZ$.
+	Clearly, every nonzero prime ideal is maximal.
+
+	Nevertheless, in $\mathcal A$,
+	$(2 \cdot 3 \cdot 5)=(60)$ is not a prime ideal (so of course it isn't a maximal ideal),
+	but we cannot break it down into, for example, $(2 \cdot 3) \cdot (5)$.
+\end{example}
+
 \begin{theorem}[Prime factorization works]
 	Let $\ka$ be a nonzero proper ideal of a Dedekind domain $\mathcal A$.
 	Then $\ka$ can be written as a finite product of nonzero prime ideals $\kp_i$, say
@@ -264,8 +323,8 @@ I won't write out the proof, but I'll describe the basic method of attack.
 Section 3 of \cite{ref:ullery} does a nice job of explaining it.
 When we proved the fundamental theorem of arithmetic, the basic plot was:
 \begin{enumerate}[(1)]
-	\ii Show that if $p$ is a rational prime\footnote{
-		Note that the kindergarten definition of a prime is
+	\ii Show that if $p$ is a rational prime\footnote{Note
+		that the kindergarten definition of a prime is
 		that ``$p$ isn't the product of two smaller integers''.
 		This isn't the correct definition of a prime:
 		the definition of a prime is that $p \mid bc$
@@ -432,7 +491,7 @@ to factor $p$ in any $\OO_K$ of the form $\ZZ[\theta]$.
 \begin{theorem}[Factoring algorithm / Dedekind-Kummer theorem]
 	\label{thm:factor_alg}
 	Let $K$ be a number field.
-	Let $\theta \in \OO_K$ with $[\OO_K : \ZZ[\theta]] = j < \infty$,
+	Let $\theta \in \OO_K$ with $|\OO_K / \ZZ[\theta]| = j < \infty$,
 	and let $p$ be a prime not dividing $j$.
 	Then $(p) = p \OO_K$ is factored as follows:
 	\begin{quote}
@@ -470,6 +529,13 @@ in any monogenic number field with $\OO_K = \ZZ[\theta]$. To summarize the recip
 \end{enumerate}
 Then your $(p) = \kp_1^{e_1} \dots \kp_g^{e_g}$.
 
+Or even shorter:
+\begin{moral}
+	In order to factorize $p$ in $\ZZ[x]/(f(x))$, we can factorize $f(x)$ in $\ZZ[x]/(p)$ instead.
+\end{moral}
+Both are equivalent to factorizing $0$ in $\ZZ[x]/(f(x), p)$ --- in other words, writing
+$\ZZ[x]/(f(x), p)$ as a direct sum of $\ZZ[x]$-modules.
+
 \begin{exercise}
 	Factor $(29)$ in $\ZZ[i]$ using the above algorithm.
 \end{exercise}
@@ -479,7 +545,7 @@ Then your $(p) = \kp_1^{e_1} \dots \kp_g^{e_g}$.
 %	It turns out that we can still apply the
 %	factoring algorithm to ``almost all primes'' as follows.
 %	Suppose $K$ is a number field and $\alpha \in \OO_K$ such that
-%	$[\OO_K : \ZZ[\alpha]] = j < \infty$.
+%	$|\OO_K / \ZZ[\alpha]| = j < \infty$.
 %	Then as long as $p \nmid j$, we can apply the above algorithm
 %	with $f$ the minimal polynomial of $\alpha$.
 %	The formulation we presented above was the special case where $j=1$.
@@ -526,6 +592,13 @@ Now, as we prescribed, the fractional ideals form a multiplicative group:
 			\mid x\ka \subseteq (1) = \mathcal A \right\} \]
 	is a fractional ideal with $\ka \ka\inv = (1)$.
 \end{theorem}
+
+(This result is nontrivial.
+To prove $\ka \ka\inv = (1)$, one approach is to prove it first
+for prime $\ka$, then consider the factorization of $\ka$ into prime ideals.)
+% approach used by Neukirch.
+% I find proving 𝔞 𝔞⁻¹ ⊆ (1) trivial, but the reverse inclusion is difficult.
+
 \begin{definition}
 	Thus nonzero fractional ideals of $K$ form a group under multiplication
 	with identity $(1) = \mathcal A$.
@@ -538,7 +611,7 @@ Now, as we prescribed, the fractional ideals form a multiplicative group:
 \end{example}
 
 It follows that every fractional ideal $J$ can be uniquely written as
-\[ J = \prod_i \kp_i^{n_i} \cdot \prod \kq_i^{-m_i} \]
+\[ J = \prod_i \kp_i^{n_i} \cdot \prod_i \kq_i^{-m_i} \]
 where $n_i$ and $m_i$ are positive integers.
 In fact, $\ka$ is an integral ideal if and only if all its exponents are nonnegative,
 just like the case with integers.
@@ -551,7 +624,7 @@ which gives us a notion of the ``size'' of an ideal.
 \begin{definition}
 	The \vocab{ideal norm} (or absolute norm)
 	of a nonzero ideal $\ka \subseteq \OO_K$ is defined as
-	$\left\lvert \OO_K / \ka \right\rvert$ and denoted $\Norm(\ka)$.
+	$|\OO_K / \ka|$ and denoted $\Norm(\ka)$.
 \end{definition}
 \begin{example}[Ideal norm of $(5)$ in the Gaussian integers]
 	Let $K = \QQ(i)$, $\OO_K = \ZZ[i]$.
@@ -585,7 +658,7 @@ which turn out to be true:
 	\begin{enumerate}[(a)]
 		\ii $\Norm(\ka)$ is finite.
 		\ii For any other nonzero ideal $\kb$, $\Norm(\ka\kb) = \Norm(\ka)\Norm(\kb)$.
-		\ii If $\ka = (a)$ is principal, then $\Norm(\ka) = \Norm_{K/\QQ}(a)$.
+		\ii If $\ka = (a)$ is principal, then $\Norm(\ka) = |\Norm_{K/\QQ}(a)|$.
 		% \ii The ideal norm $\Norm(\ka)$ equals the GCD of $\Norm_{K/\QQ}(\alpha)$ across
 		% all $\alpha \in \ka$. In particular, if $\ka = (\alpha)$ is principal
 		% then $\Norm(\ka) = \Norm_{K/\QQ}(\alpha)$.
@@ -609,12 +682,23 @@ was a Dedekind domain.
 %		but $2 \in \ka$ so $1 \in \ka$.
 %\end{example}
 
+As with the case of the norm of an element, the ideal norm also has a geometrical interpretation:
+Recall that if $\ka = (a)$, let $\mu_a$ be the multiplication-by-$a$ map,
+then $\Norm_{K/\QQ}(a) = |\det \mu_a|$ measures how much $K$ is stretched under $\mu_a$ when viewed
+as a $\QQ$-vector space.
+\begin{exercise}
+	Convince yourself that if $\mu_a(\OO_K) \subseteq \OO_K$, then $|\OO_K / a \OO_K|$ is
+	exactly equal to $|\det \mu_a|$.
+\end{exercise}
+This explains why $\Norm(\ka) = |\Norm_{K/\QQ}(a)|$, although note that $\ka = (a) = (-a)$, so there
+need not be an unique multiplication-by-$\ka$ map.
+
 The fact that $\Norm$ is completely multiplicative lets us also consider the norm
 of a fractional ideal $J$ by the natural extension
 \[ J = \prod_i \kp_i^{n_i} \cdot \prod_i \kq_i^{-m_i}
 	\quad \implies \quad
 	\Norm(J) \defeq \frac{\prod_i \Norm(\kp_i)^{n_i}}{\prod_i \Norm(\kq_i)^{m_i}}. \]
-Thus $\Norm$ is a natural group homomorphism $J_K \to \QQ \setminus \{0\}$.
+Thus $\Norm$ is a natural group homomorphism $J_K \to \QQ^\times$.
 
 
 \section\problemhead
