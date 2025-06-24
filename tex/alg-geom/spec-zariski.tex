@@ -35,8 +35,7 @@ of the ``affine variety'' chapter.
 
 To emphasize the point:
 \begin{moral}
-	For affine varieties $V$, the spectrum of the coordinate ring $\CC[V]$ is
-	$V$.
+	For affine varieties $V$, the spectrum of the coordinate ring $\CC[V]$ is $V$.
 \end{moral}
 Thus, we may also think of $\Spec$ as the opposite operation of taking the
 ring of global sections, defined purely-algebraically in order to depend only on
@@ -148,7 +147,7 @@ the one for the ideal $(y-x^2)$ floats along the parabola, etc.
 	\listhack
 	\begin{enumerate}[(a)]
 		\ii $\Spec \ZZ$ consists of a point for every prime $p$,
-		plus a generic point that is somewhere, but no where in particular.
+		plus a generic point that is somewhere, but nowhere in particular.
 
 		\ii $\Spec \CC[x] / (x^2)$ has only $(x)$ as a prime ideal.
 		The ideal $(0)$ is not prime since $0 = x \cdot x$.
@@ -289,13 +288,10 @@ We now also introduce one more word:
 	Also, show that the closure of a point is always irreducible.
 \end{exercise}
 
-This is the analog of the ``irreducible''
-we defined for affine varieties,
+This is the analog of the ``irreducible'' we defined for affine varieties,
 but it is now a topological definition,
-although in practice this definition is only
-useful for spaces with the Zariski topology.
-Indeed, if any two nonempty open sets intersect
-(and there is more than one point),
+although in practice this definition is only useful for spaces with the Zariski topology.
+Indeed, if any two nonempty open sets intersect (and there is more than one point),
 the space is certainly not Hausdorff!
 As with our old affine varieties,
 the intuition is that $\VV(xy)$ (the union of two lines)
@@ -319,18 +315,15 @@ So actually, the generic points
 kind of let us cheat our way through the following bit:
 \begin{proposition}
 	[Spectrums of integral domains are irreducible]
-	If $A$ is an integral domain,
-	then $\Spec A$ is irreducible.
+	If $A$ is an integral domain, then $\Spec A$ is irreducible.
 \end{proposition}
 \begin{proof}
-	Just note $(0)$ is a prime ideal,
-	and is in every open set.
+	Just note $(0)$ is a prime ideal, and is in every open set.
 \end{proof}
 You should compare this with our old classical result that
 $\CC[x_1, \dots, x_n]/I$
 was irreducible as an affine variety exactly when $I$ was prime.
-This time, the generic point actually takes care
-of the work for us:
+This time, the generic point actually takes care of the work for us:
 the fact that it is \emph{allowed} to float
 anywhere in the plane lets us capture the idea that
 $\Aff^2$ should be irreducible
@@ -367,8 +360,7 @@ they are the generic points lying along any irreducible closed set
 At this point,\footnote{Pun not intended}
 I may as well give you the real definition of generic point.
 \begin{definition}
-	Given a topological space $X$,
-	a \vocab{generic point} $\eta$
+	Given a topological space $X$, a \vocab{generic point} $\eta$
 	is a point whose closure is the entire space $X$.
 \end{definition}
 So for us, when $A$ is an integral domain,
@@ -381,6 +373,45 @@ $\Spec A$ has generic point $(0)$.
 	What's happening is that $\VV(y-x^2)$ is a closed set,
 	and as a topological subspace, it has generic point $(y-x^2)$.
 \end{abuse}
+
+\section{Krull dimension}
+Surprisingly, the topology is good enough to give dimension.
+For affine schemes:
+\begin{definition}
+	Let $A$ be a commutative ring.
+	Consider chains of prime ideals
+	$\kp_0 \subsetneq \kp_1 \subsetneq \dots \subsetneq \kp_n \subseteq A$,
+	where $n$ is called the \emph{length}.
+	The supremum of all possible $n$ is the called \vocab{Krull dimension} of $A$.
+
+	The Krull dimension is always nonnegative unless $A$ is the zero ring,
+	in which case either $-1$ or $-\infty$ are used conventionally.
+\end{definition}
+
+This definition should match your intuition.
+\begin{example}
+	[Examples of Krull dimension]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii $\CC[x_1, \dots, x_n]$ has Krull dimension $n$, with the chain
+		\[ (0) \subsetneq (x_1) \subsetneq (x_1, x_2) \subsetneq \dots \subsetneq (x_1, \dots, x_n) \]
+		having length $n$.
+		This matches our expectation that $\Spec \CC[x_1, \dots, x_n]$ corresponds to $\Aff^n$.
+		\ii $\CC[x,y] / (y-x^2)$ has Krull dimension $1$, with the chain
+		\[ (x,y) \subsetneq (y-x^2) \]
+		having length $1$.
+		Geometrically, we think of $(x,y)$ as the origin and $(y-x^2)$ as the parabola itself.
+		\ii $\ZZ$ has Krull dimension $1$.
+		\ii $\ZZ/(60)$ has Krull dimension $0$; it's just three points.
+	\end{enumerate}
+\end{example}
+
+You can do this more generally with a topological space $X$:
+the Krull dimension of a space is the supremum of chains of irreducible closed subspaces
+$Z_0 \subsetneq Z_1 \subsetneq \dots \subsetneq Z_n$.
+You'd only want to use this definition in situations
+where $X$ had a Zariski topology:
+in particular, if $X = \Spec A$, this is just the Krull dimension of the ring $A$ itself.
 
 \section{On radicals}
 Back when we studied classical algebraic geometry in $\CC^n$,
@@ -542,11 +573,25 @@ even though there will be some parts that won't make sense yet.
 	in terms of $\Spec A$ and $\Spec B$.
 \end{problem}
 
+\begin{sproblem}
+	[How to actually think about Artinian rings]
+	\label{prob:artinian}
+	Let $A$ be a Noetherian ring.
+	Prove that all of the following are equivalent:
+	\begin{enumerate}[(i)]
+		\ii $A$ is Artinian, i.e.\ satisfies the descending chain condition
+		(as defined in \Cref{prob:akizuki}).
+		\ii $A$ has Krull dimension $0$ or $A$ is the zero ring.
+		\ii $\Spec A$ is finite and discrete.
+		\ii $\Spec A$ is finite.
+	\end{enumerate}
+\end{sproblem}
+
 \endinput
 
 \begin{problem}
 	[From Andrew Critch]
-	\gim
+	\onechili
 	Let $A$ be a Noetherian ring.
 	Show that $A$ is an integral domain if and only if it has no idempotents,
 	and $A_\kp$ is an integral domain for every prime $\kp$.

@@ -64,7 +64,7 @@ Notice that by plugging in $x = \alpha$, we find that $R(\alpha) = 0$.
 But $\deg R < \deg P$, and $P(x)$ was supposed to be the minimal polynomial.
 That's impossible!
 
-It follows from this and the monotonicity of the minimal polynomial
+It follows from this and the monicity of the minimal polynomial
 that it is unique (when it exists), so actually it is better to refer to
 \emph{the} minimal polynomial.
 \begin{exercise}
@@ -136,8 +136,7 @@ as \vocab{rational integers}.
 	that any monic integer polynomial does not have $\half$ as a root!)
 \end{example}
 
-There are two properties I want to give
-for these off the bat,
+There are two properties I want to state off the bat,
 because they'll be used extensively in the tricky
 (but nice) problems at the end of the section.
 The first we prove now, since it's very easy:
@@ -165,6 +164,18 @@ The other is that:
 We could prove this now if we wanted to,
 but the results in the next chapter will more or less
 do it for us, and so we take this on faith temporarily.
+
+\begin{remark}
+  For $\alpha$ an algebraic integer with minimal 
+  polynomial $P$, it's clear by definition that all 
+  other roots of $P$ are also algebraic integers. One 
+  can check that this property (along with the two 
+  properties above) characterize the set of algebraic
+  integers. From this point of view, the algebraic
+  integers can be thought of as an intrinsically-defined 
+  generalization of the ring of integers $\ZZ \subseteq 
+  \QQ$ to the field of all algebraic numbers $\ol{\QQ}$. 
+\end{remark}
 
 \section{Number fields}
 \prototype{$\QQ(\sqrt2)$ is a typical number field.}
@@ -201,9 +212,8 @@ or just ignore the distinction and pretend I wrote square brackets everywhere.
 \begin{example}[Adjoining an algebraic number]
 	Let $\alpha$ be the root of some irreducible polynomial $P(x) \in \QQ[x]$.
 	The field $\QQ(\alpha)$ is a field extension as well, and the basis
-	is $1, \alpha, \alpha^2, \dots, \alpha^{m-1}$,
-	where $m$ is the degree of $\alpha$.
-	In particular, the degree of $\QQ(\alpha)$ is just the degree of $\alpha$.
+	is $1, \alpha, \alpha^2, \dots, \alpha^{m-1}$, where $m = \deg P$.
+	In particular, the degree of $\QQ(\alpha)$ is the degree of $P$.
 \end{example}
 \begin{example}[Non-examples of number fields]
 	$\RR$ and $\CC$ are not number fields since there is no \emph{finite}
@@ -245,7 +255,7 @@ makes it clear why this theorem should not be too surprising.
 
 \begin{problem}
 	[Brazil 2006]
-	\gim
+	\onechili
 	Let $p$ be an irreducible polynomial in $\QQ[x]$
 	and degree larger than $1$.
 	Prove that if $p$ has two roots $r$ and $s$ whose product is $1$
@@ -269,7 +279,7 @@ makes it clear why this theorem should not be too surprising.
 \end{sproblem}
 
 \begin{dproblem}
-	\gim
+	\onechili
 	Which rational numbers $q$ satisfy $\cos(q\pi) \in \QQ$?
 	\begin{hint}
 		Only the obvious ones.
@@ -294,7 +304,7 @@ makes it clear why this theorem should not be too surprising.
 \end{problem}
 
 \begin{problem}[Kronecker's theorem]
-	\yod
+	\twochili
 	Let $\alpha$ be an algebraic integer.
 	Suppose all its Galois conjugates have absolute value one.
 	Prove that $\alpha^N=1$ for some positive integer $N$.
@@ -306,7 +316,7 @@ makes it clear why this theorem should not be too surprising.
 \end{problem}
 
 \begin{problem}
-	\yod
+	\twochili
 	Is there an algebraic integer with absolute value one
 	which is not a root of unity?
 \end{problem}

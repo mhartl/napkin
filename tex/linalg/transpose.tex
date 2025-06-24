@@ -115,7 +115,7 @@ for every $v$.
 \end{ques}
 
 And this works beautifully in the real case.
-\begin{theorem}[$V \cong V^\vee$ for real inner form]
+\begin{theorem}[$V \cong V^\vee$ for real inner forms]
 	\label{thm:real_dual_isomorphic}
 	Let $V$ be a finite-dimensional \emph{real}
 	inner product space and $V^\vee$ its dual.
@@ -126,9 +126,9 @@ And this works beautifully in the real case.
 \begin{proof}
 	It suffices to show that the map is injective and surjective.
 	\begin{itemize}
-		\ii Injective: suppose $\left< v_1, v \right> = \left< v_2, v \right>$
+		\ii Injective: suppose $\left< v, v_1 \right> = \left< v, v_2 \right>$
 		for every vector $v \in V$.
-		This means $\left< v_1 - v_2, v \right> = 0$ for every vector $v \in V$.
+		This means $\left< v, v_1 - v_2 \right> = 0$ for every vector $v \in V$.
 		This can only happen if $v_1 - v_2 = 0$; for example, take $v = v_1 - v_2$
 		and use positive definiteness.
 		\ii Surjective: take an orthonormal basis $e_1$, \dots $e_n$
@@ -149,7 +149,7 @@ Thus
 \end{moral}
 
 Unfortunately, things go awry if $V$ is complex.
-Here is the results:
+Here is the result:
 \begin{theorem}[$V$ versus $V^\vee$ for complex inner forms]
 	Let $V$ be a finite-dimensional \emph{complex}
 	inner product space and $V^\vee$ its dual.
@@ -197,15 +197,13 @@ without making mention to dual spaces at all.
 Some immediate remarks about this definition:
 \begin{itemize}
 \ii Our $T^\dagger$ is well-defined,
-because $\left< T(-), w \right>_W$ is some function in $V^\vee$,
+because $v \mapsto \left< T(v), w \right>_W$ is some function in $V^\vee$,
 and hence by the bijection earlier
 it should be uniquely of the form $\left< -, v \right>$ for some $v \in V$.
 \ii This map $T^\dagger$ is indeed a linear map (why?).
 \ii The niceness of this definition is that it doesn't
 make reference to any basis or even $V^\vee$,
 so it is the ``right'' definition for a inner product space.
-\ii By symmetry, of course, we also have
-$\left< T^\dagger(v), w \right> = \left< v, T(w)\right>$.
 \end{itemize}
 
 \begin{example}
@@ -234,7 +232,6 @@ $\left< T^\dagger(v), w \right> = \left< v, T(w)\right>$.
 	\[ T^\dagger(f_1) = -ie_1 + 3e_2 + 5e_3 \]
 	so that the sesquilinearity will conjugate the $i$.
 \end{example}
-
 
 The pattern continues, though we remind the reader that
 we need the basis to be orthonormal to proceed.
@@ -388,7 +385,7 @@ As a corollary:
 \section{\problemhead}
 \begin{sproblem}
 	[Double dual]
-	\gim
+	\onechili
 	\label{prob:double_dual}
 	Let $V$ be a finite-dimensional vector space.
 	Prove that
@@ -465,7 +462,7 @@ As a corollary:
 \begin{problem}
 	[$T^\dagger$ vs $T^\vee$]
 	Let $V$ and $W$ be real inner product spaces
-	and let $T \colon V \to W$ be an inner product.
+	and let $T \colon V \to W$ be a linear map.
 	Show that the following diagram commutes:
 	\begin{center}
 	\begin{tikzcd}
@@ -482,12 +479,9 @@ As a corollary:
 
 \begin{problem}
 	[Polynomial criteria for normality]
-	Let $V$ be a complex inner product space
-	and let $T \colon V \to V$ be a linear map.
-	Show that $T$ is normal if and only if
-	there is a polynomial\footnote{Here,
-		$p(T)$ is meant in the same composition
-		sense as in Cayley-Hamilton.}
+	Let $V$ be a complex inner product space and let $T \colon V \to V$ be a linear map.
+	Show that $T$ is normal if and only if there is a polynomial\footnote{Here,
+			we mean $p(T)$ in the same composition sense as in Cayley-Hamilton.}
 	$p \in \CC[t]$ such that \[ T^\dagger = p(T). \]
 	\begin{hint}
 		If there is a polynomial, check $TT^\dagger = T^\dagger T$ directly.
@@ -534,4 +528,22 @@ As a corollary:
 		Since there are finitely many $\lambda_i$,
 		we can construct such a polynomial using Lagrange interpolation.
 	\end{sol}
+\end{problem}
+
+\begin{problem}
+	[Kronecker product of matrices]
+	\onechili
+	Find an equivalence between the following two definitions of the
+	\href{https://en.wikipedia.org/wiki/Kronecker_product}{Kronecker product},
+	the former from a mathematician and the latter from a computer scientist:
+	\begin{itemize}
+		\ii Suppose $A \colon V_1 \to W_1$ and $B \colon V_2 \to W_2$
+		are linear maps of finite-dimensional vector spaces over $\RR$.
+		Then we define $A \otimes B \colon V_1 \otimes V_2 \to W_1 \otimes W_2$
+		on simple tensors by $v_1 \otimes v_2 \mapsto A(v_1) \otimes B(v_2)$.
+
+		\ii Suppose $A$ is an $m \times n$ matrix and $B$ is a $p \times q$ matrix.
+		Then $A \otimes B$ is an operator which takes a $q \times n$ matrix $X$
+		and returns the $p \times m$ matrix $BXA^\top$.
+	\end{itemize}
 \end{problem}

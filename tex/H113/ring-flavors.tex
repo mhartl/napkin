@@ -439,14 +439,14 @@ So, naturally, for any ring with a similar integer-valued function, we can perfo
 We call a function $\Norm \colon R \to \ZZ_{\geq 0}$ that satisfies the two conditions above an
 \vocab{Euclidean norm}, and an integral domain $R$ that has a norm an \vocab{Euclidean domain}.
 
-\begin{example}[The ring of Gaussian integers is an Euclidean domain]
+\begin{example}[The ring of Gaussian integers is a Euclidean domain]
 	On $\ZZ[i]$, the usual norm
 	\[ |a + bi| = a^2 + b^2 \]
-	is an Euclidean norm.
+	is a Euclidean norm.
 
 	Indeed, for any elements $a$ and $b$ with $b \neq 0$, we can compute the remainder $r$
 	by dividing $a$ by $b$, let $q$ be the Gaussian integer that is closest to $\frac{a}{b}$ (that
-	is, $|\frac{a}{b}-q|$ is minimized) and let $r = a-b q$, then it can be proven that $|r| < |q|$.
+	is, $|\frac{a}{b}-q|$ is minimized) and let $r = a-b q$, then it can be proven that $|r| < |b|$.
 
 	The proof is done by showing $|\frac{a}{b}-q| < 1$ --- if we look at the lattice of points
 	contained in $\ZZ[i]$ embedded in the complex plane,
@@ -473,22 +473,22 @@ We call a function $\Norm \colon R \to \ZZ_{\geq 0}$ that satisfies the two cond
 	\end{asy}
 	\end{center}
 \end{example}
-\begin{example}[The ring of Eisenstein integers is an Euclidean domain]
-	Similarly, let $\omega = \frac{1 + \sqrt 3}{2}$ (that is $\omega^3 = -1$), then $\ZZ[\omega]$ is
-	an Euclidean domain with the usual norm
+\begin{example}[The ring of Eisenstein integers is a Euclidean domain]
+	Similarly, let $\omega = \frac{1 + \sqrt 3 i}{2}$ (that is $\omega^3 = -1$), then $\ZZ[\omega]$ is
+	a Euclidean domain with the usual norm
 	\[ |a + bi| = a^2 + b^2 \]
 	or equivalently
 	\[ |a + b\omega| = a^2 + ab + b^2. \]
 \end{example}
-\begin{example}[The ring {$\ZZ[\sqrt{11}]$} is an Euclidean domain]
+\begin{example}[The ring {$\ZZ[\sqrt{11}]$} is a Euclidean domain]
 	As before. This time, the natural norm\footnote{%
 	See \Cref{sec:norms_traces} for the explanation why this norm is the natural one.}
 	will be:
 	\[
-		\Norm_{\QQ(\sqrt{11})/\QQ}(a + b \sqrt 11) = (a + b \sqrt 11) (a - b \sqrt 11)
+		\Norm_{\QQ(\sqrt{11})/\QQ}(a + b \sqrt{11}) = (a + b \sqrt{11}) (a - b \sqrt{11})
 		= a^2 - 11 b^2.
 	\]
-	Since we need an Euclidean norm, we will take $\Norm(a + b \sqrt 11) = |a^2 - 11 b^2|.$
+	Since we need a Euclidean norm, we will take $\Norm(a + b \sqrt{11}) = |a^2 - 11 b^2|.$
 
 	Given two elements $a$ and $b$ in $\ZZ[\sqrt{11}]$ with $b \neq 0$,
 	we will try to compute $r$ such that $\Norm(r) < \Norm(b)$ as $r = a - q b$ as before.
@@ -576,24 +576,24 @@ We call a function $\Norm \colon R \to \ZZ_{\geq 0}$ that satisfies the two cond
 	As such, rounding to the nearest point is not always the best way --- nevertheless, it can be
 	proven (by exhaustive case checking, similar to the case of $\ZZ[i]$) that for every value of
 	$\frac{a}{b} \in \QQ(\sqrt{11})$, there is some $q \in \ZZ[\sqrt{11}]$ such that
-	$\Norm(\frac{a}{b}-q) < 1$. Thus $\Norm$ is an Euclidean norm.
+	$\Norm(\frac{a}{b}-q) < 1$. Thus $\Norm$ is a Euclidean norm.
 \end{example}
 
-That having said, sometimes the natural norm of an Euclidean domain need not be Euclidean.
+That having said, sometimes the natural norm of a Euclidean domain need not be Euclidean.
 $\ZZ[\frac{1 + \sqrt{69}}{2}]$ is the first example.
 %DOI 10.1007/BF02567617
 
-\begin{example}[{$\QQ[x]$ is an Euclidean domain}]
+\begin{example}[{$\QQ[x]$ is a Euclidean domain}]
 	Similarly, in $\QQ[x]$ we can let the norm be the degree of a polynomial --- the polynomial
 	division with remainder algorithm will take care of computing the $\gcd$.
 \end{example}
 
-Back to the topic of PID. In an Euclidean domain, you can compute the $\gcd$ of any two elements.
+Back to the topic of PID. In a Euclidean domain, you can compute the $\gcd$ of any two elements.
 What about an infinite family of elements?
 
 Turns out the situation is very nice:
 \begin{proposition}
-	An Euclidean domain is a PID.
+	A Euclidean domain is a PID.
 \end{proposition}
 Actually, we don't need to provide an explicit algorithm to compute the $\gcd$ of an infinite family
 of elements --- of course any such algorithm cannot terminate in a finite amount of time! --- but we
@@ -617,7 +617,7 @@ With that intuition in mind, we formalize our proof:
 \end{proof}
 
 
-\begin{example}[{The ring $\ZZ[\frac{1 + \sqrt{-19}}{2}]$ is not an Euclidean domain}]
+\begin{example}[{The ring $\ZZ[\frac{1 + \sqrt{-19}}{2}]$ is not a Euclidean domain}]
 	Let $R = \ZZ[\frac{1 + \sqrt{-19}}{2}]$.
 
 	With the above example in mind, what can we say about this ring?
@@ -630,10 +630,10 @@ With that intuition in mind, we formalize our proof:
 
 We will prove the above claim. The general plan is:
 \begin{itemize}
-	\ii Show that the existence of an Euclidean norm implies the existence of something that we
+	\ii Show that the existence of a Euclidean norm implies the existence of something that we
 	calls an \vocab{universal side divisor}.
 	\ii Show that $R$ has no universal side divisor.
-	\ii Thus, $R$ cannot have an Euclidean norm.
+	\ii Thus, $R$ cannot have a Euclidean norm.
 \end{itemize}
 
 First, look at the examples above of $\ZZ[i]$ and $\ZZ[\omega]$. We see that the units are the
@@ -722,7 +722,7 @@ divisor of every element $a \in R$.
 
 Now, the connection between the two concepts considered above.
 \begin{lemma}
-	In an Euclidean domain,
+	In a Euclidean domain,
 	the smallest-norm nonzero element $b$ that is not an unit is a universal side divisor.
 \end{lemma}
 \begin{proof}
@@ -734,7 +734,17 @@ And finally,
 \begin{proposition}
 	There is no universal side divisor in $R$.
 \end{proposition}
-Proof is tedious, omitted.\todo{fix}  % actually I haven't worked through the proof yet -user202729
+% actually I haven't worked through the proof yet -user202729 % draft solution below - palindrome868
+\begin{proof}
+All numbers are of the form, $\frac{a}{2} + \frac{b\sqrt{-19}}{2}$ where $a$ and $b$ have the same parity. The absolute value of a complex number, defined as $\frac{a^2}{4} + \frac{19b^2}{4}$, is multiplicative and is greater than $1$ for all numbers in $\mathbb Z [\frac{1+\sqrt{-19}}{2}]$ except for $-1, 0, 1$, which have absolute values of $1, 0, 1$, respectively. Since there are no numbers in the ring with absolute values greater than $0$ and less than $1$, all numbers in the ring with absolute values greater than $1$ do not have multiplicative inverses in the ring. Hence, the only units are $1$ and $-1$.
+
+When we multiply all the elements in the ring by $x$, the distances between pairs of elements in the complex plane multiplies by $|x|$. Initially, the distances between pairs of elements were at least $1$.
+\begin{itemize}
+\item If $x$ is real and $|x| \geq 2$, then $xR$ doesn't contain any elements of the form $a + \frac{\sqrt{-19}}{2}$, so $x$ is not a universal side divisor.
+\item If $x$ is non-real and $|x| \geq 2$, then an element in $xR$ can only be real if it was previously non-real. This means the elements of $xR$ on the real axis have absolute value of at least $2|\frac{1+\sqrt{-19}}{2}| = 2\sqrt{5} \geq 4$. Hence, $x$ is not a side divisor of $2$, so $x$ is not a universal side divisor.
+\end{itemize}
+Since $R$ does not have a universal side divisor, $R$ is not an Euclidean domain.
+\end{proof}
 
 \section{\problemhead}
 Not olympiad problems, but again the spirit is very close
@@ -752,7 +762,7 @@ to what you might see in an olympiad.
 \begin{problem}
 	[Homomorphisms from fields are injective]
 	\label{prob:field_hom}
-	Let $K$ be a field and $R$ a ring.
+	Let $K$ be a field and $R$ a nontrivial ring.
 	Prove that any homomorphism $\psi \colon K \to R$
 	is injective.\footnote{Note that $\psi$
 		cannot be the zero map for us,
@@ -782,7 +792,7 @@ to what you might see in an olympiad.
 \end{sproblem}
 
 \begin{sproblem}
-	\gim
+	\onechili
 	Let $R$ be an integral domain with finitely many elements.
 	Prove that $R$ is a field.
 	\label{prob:finite_domain_field}
@@ -846,15 +856,56 @@ to what you might see in an olympiad.
 	\end{sol}
 \end{problem}
 
-\begin{problem}
-	Prove that any nonzero prime ideal of $\ZZ[\sqrt 2]$ is also a maximal ideal.
-	%(This is starred since the main idea of the solution will get used extensively in
-	%the algebraic NT chapters, even though the problem itself won't.)
+\begin{dproblem}
+	How many prime ideals of $\ZZ[\sqrt{2017}]$ are \emph{not} maximal ideals?
 	\label{prob:dedekind_sample}
 	\begin{hint}
-		Show that the quotient $\ZZ[\sqrt2]/I$ has finitely many elements
+		Show that the quotient $\ZZ[\sqrt{2017}]/I$ has finitely many elements
 		for any nonzero prime ideal $I$.
 		Therefore, the quotient is an integral domain, it is also a field,
 		and thus $I$ was a maximal ideal.
 	\end{hint}
+	\begin{sol}
+		Only one; the ideal $(0)$ which is not maximal.
+		We contend every other prime ideal is maximal.
+
+		Indeed, let $I$ be any ideal (not necessarily prime),
+		and let $a + b \sqrt{2017}$ be a nonzero element of it.
+		Then $I$ also contains $(a^2-2017b^2)$.
+		That means when taking modulo $I$ we may take modulo the integer
+		$n \coloneqq |a^2-2017b^2| \neq 0$.
+
+		So every element in $R$ is equivalent modulo $I$
+		to an element of the form $x + y \sqrt{2017}$,
+		where $x,y \in \{0, 1, \dots, n-1\}$.
+		In other words, the quotient $R/I$ has at most finitely many elements.
+
+		When $I$ is prime, it follows $R/I$ is an integral domain, too.
+		An integral domain with finitely many elements must be a field.
+		Hence, from $R/I$ being a field, we conclude $I$ is maximal.
+	\end{sol}
+\end{dproblem}
+
+\begin{problem}
+	Let $R$ denote the set of rational numbers $q$ such that,
+	when $q$ is written in lowest terms, the denominator is not a multiple of $5$.
+	Then $R$ is a ring (under the usual addition and multiplication).
+	Classify all the ideals of $R$.
+	Which of these ideals are prime / maximal?
+	\begin{sol}
+		The ideals are $(0)$, $(1) = R$, and $(5^n) = 5^n R$ for each $n \ge 1$.
+		The ideal $(0)$ is prime and the ideal $(5)$ is maximal
+		(because the quotient $R/(5) \cong \FF_5$ is a field).
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Recall from \Cref{prob:akizuki} that a ring $R$ is \vocab{Artinian}
+	if it satisfies the \vocab{descending chain condition}:
+	there does \emph{not} exist an infinite descending chain of ideals
+	$I_1 \supsetneq I_2 \supsetneq I_3 \supsetneq \dots$.
+	\begin{enumerate}[(a)]
+		\ii Show that if $R$ is Noetherian and an integral domain, then it's a field.
+		\ii More generally, show that every prime ideal in a Noetherian ring is maximal.
+	\end{enumerate}
 \end{problem}

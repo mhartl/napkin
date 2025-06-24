@@ -207,7 +207,7 @@ Let's check it.
 	\begin{itemize}
 		\ii We claim that the identity is the ``do-nothing'' loop $1$
 		we described above. The reader can check that for any $\gamma$,
-		\[ \gamma \simeq \gamma \ast 1 = 1 \ast \gamma. \]
+		\[ \gamma \simeq \gamma \ast 1 \simeq 1 \ast \gamma. \]
 		\ii For a loop $\gamma$, recall again we define its ``backwards'' loop $\ol\gamma$ by
 		\[ \ol\gamma(t) = \gamma(1-t). \]
 		Then we have $\gamma \ast \ol\gamma = \ol\gamma \ast \gamma = 1$.
@@ -224,7 +224,7 @@ Before going any further I had better give some examples.
 		\ii The fundamental group of $\CC$ is the
 		trivial group: in the plane, every loop is nulhomotopic.
 		(Proof: imagine it's a piece of rope and reel it in.)
-		\ii On the other hand, the fundamental group of $\CC - \{0\}$
+		\ii On the other hand, the fundamental group of $\CC \setminus \{0\}$
 		(meteor example from earlier) with any base point is actually $\ZZ$!
 		We won't be able to prove this for a while,
 		but essentially a loop is determined by the number of times
@@ -502,18 +502,18 @@ This homotopy can be quite dramatic:
 	The zero function $z \mapsto 0$ and the identity function $z \mapsto z$
 	are homotopic as functions $\CC \to \CC$.
 	The necessary deformation is
-	\[ [0,1] \times \CC \to \CC \text{ by } (t,z) \mapsto tz. \]
+	\[ [0,1] \times \CC \to \CC \text{ by } (s,z) \mapsto sz. \]
 \end{example}
 
 I bring this up because I want to define:
 \begin{definition}
 	\label{def:homotopy_equiv}
-	Let $X$ and $Y$ be continuous spaces.
+	Let $X$ and $Y$ be spaces.
 	They are \vocab{homotopy equivalent} if there exist
-	functions $f \colon X \to Y$ and $g \colon Y \to X$ such that
+	continuous functions $f \colon X \to Y$ and $g \colon Y \to X$ such that
 	\begin{enumerate}[(i)]
-		\ii $f \circ g \colon X \to X$ is homotopic to the identity map on $X$, and
-		\ii $g \circ f \colon Y \to Y$ is homotopic to the identity map on $Y$.
+		\ii $f \circ g \colon Y \to Y$ is homotopic to the identity map on $Y$, and
+		\ii $g \circ f \colon X \to X$ is homotopic to the identity map on $X$.
 	\end{enumerate}
 	If a topological space is homotopy equivalent to a point,
 	then it is said to be \vocab{contractible}.
@@ -578,13 +578,13 @@ More precisely,
 	Then $\pi_n(X) \cong \pi_n(Y)$ for every positive integer $n$.
 \end{theorem}
 \begin{proof}
-	Let $\gamma \colon [0,1] \to X$ be a loop.
+	Let $\gamma \colon [0,1]^n \to X$ be a $S^n$.
 	Let $f \colon X \to Y$ and $g \colon Y \to X$ be maps witnessing that $X$ and $Y$ are homotopy equivalent
 	(meaning $f \circ g$ and $g \circ f$ are each homotopic to the identity).
 	Then the composition
-	\[ [0,1] \taking\gamma X \taking f Y \]
-	is a loop in $Y$ and hence $f$ induces a natural homomorphism $\pi_1(X) \to \pi_1(Y)$.
-	Similarly $g$ induces a natural homomorphism $\pi_1(Y) \to \pi_1(X)$.
+	\[ [0,1]^n \taking\gamma X \taking f Y \]
+	is a $S^n$ in $Y$ and hence $f$ induces a natural homomorphism $\pi_n(X) \to \pi_n(Y)$.
+	Similarly $g$ induces a natural homomorphism $\pi_n(Y) \to \pi_n(X)$.
 	The conditions on $f$ and $g$ now say exactly that these two homomorphisms
 	are inverse to each other, meaning the maps are isomorphisms.
 \end{proof}
@@ -663,12 +663,12 @@ to each pointed topological space $(X, x_0)$ automatically implies several nice 
 \end{problem}
 
 \begin{dproblem}
-	[Special case of Seifert-van Kampen] \gim
+	[Special case of Seifert-van Kampen] \onechili
 	Let $X$ be a topological space.
 	Suppose $U$ and $V$ are connected open subsets of $X$, with $X = U \cup V$,
 	so that $U \cap V$ is nonempty and path-connected.
 
-	Prove that if $\pi_1(U) = \pi_1(V) = \{1\}$ then $\pi_1(X) = 1$.
+	Prove that if $\pi_1(U) = \pi_1(V) = \{1\}$ then $\pi_1(X) = \{1\}$.
 \end{dproblem}
 \begin{remark}
 	The \vocab{Seifert--van Kampen theorem} generalizes this
@@ -681,7 +681,7 @@ to each pointed topological space $(X, x_0)$ automatically implies several nice 
 \end{remark}
 
 \begin{problem}
-	[RMM 2013] \yod
+	[RMM 2013] \twochili
 	Let $n \ge 2$ be a positive integer.
 	A stone is placed at each vertex of a regular $2n$-gon.
 	A move consists of selecting an edge of the $2n$-gon and swapping the two stones at the endpoints of the edge.

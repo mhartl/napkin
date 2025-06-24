@@ -358,7 +358,7 @@ Thus for every pair $A \taking g X$ and $A \taking h Y$ there is a \emph{unique}
 $A \taking f X \times Y$.
 
 But $X \times Y$ is special in that it is ``universal'':
-for any \emph{other} set $A$, if you give me functions $A \to X$ and $A \to Y$, I can use it
+for \emph{any} set $A$, if you give me functions $A \to X$ and $A \to Y$, I can use it
 build a \emph{unique} function $A \to X \times Y$.
 Picture:
 \begin{center}
@@ -481,7 +481,7 @@ The picture of this is
 \begin{center}
 \begin{tikzcd}
 	&& A
-		\ar[dd, "\exists! f"]
+		\ar[dd, dotted, "\exists! f"]
 		\ar[llddd, bend right]
 		\ar[lddd, bend right]
 		\ar[rddd, bend left]
@@ -508,7 +508,7 @@ there is a unique $f$ for which
 \begin{center}
 \begin{tikzcd}
 	X \ar[rd, "\iota_X"'] \ar[rrd, "g", bend left] \\
-	& X+Y \ar[r, "\exists! f"] & A \\
+	& X+Y \ar[r, dotted, "\exists! f"] & A \\
 	Y \ar[ru, "\iota_Y"] \ar[rru, "h"', bend right]
 \end{tikzcd}
 \end{center}
@@ -540,7 +540,10 @@ The correct categorical notion is:
 	In other words, $f \circ g = f \circ h \implies g = h$.
 \end{definition}
 \begin{ques}
-	Verify that in a \emph{concrete} category, injective $\implies$ monic.
+	Convince yourself that in a \emph{concrete} category, injective $\implies$ monic.
+	(Technically, we haven't given a formal definition of concrete category yet;
+	you can redo this exercise after you reach \Cref{remark:def_concrete_category}
+	if you prefer to have the official definition.)
 \end{ques}
 \begin{ques}
 	Show that the composition of two monic maps is monic.
@@ -565,7 +568,7 @@ An additive abelian group $G = (G,+)$ is called \emph{divisible}
 if for every $x \in G$ and integer $n > 0$ there exists $y \in G$ with $ny = x$.
 Let $\catname{DivAbGrp}$ be the category of such groups.
 \begin{exercise}
-	Show that the projection $\QQ \to \QQ/\ZZ$ is monic but not injective.
+	Show that the projection $\QQ \to \QQ/\ZZ$ is monic but not injective in $\catname{DivAbGrp}$.
 \end{exercise}
 
 Of course, we can also take the dual notion.
@@ -615,7 +618,7 @@ Most notably:
 
 \begin{dproblem}
 	What is the coproduct $X+Y$ in the categories
-	$\catname{Set}$, $\catname{Vect}_k$, and a poset?
+	$\catname{Vect}_k$, and a poset?
 \end{dproblem}
 
 \begin{problem}
@@ -627,9 +630,9 @@ Most notably:
 \end{problem}
 
 \begin{problem}
-	\gim
+	\onechili
 	Consider a category $\AA$ with a \vocab{zero object},
 	meaning an object which is both initial and terminal.
-	Given objects $X$ and $Y$ in $A$,
+	Given objects $X$ and $Y$ in $\AA$,
 	prove that the projection $X \times Y \to X$ is epic.
 \end{problem}

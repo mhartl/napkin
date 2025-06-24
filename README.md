@@ -1,4 +1,4 @@
-# Napkin v1.5
+# An Infinitely Large Napkin
 
 ![Last commit](https://img.shields.io/github/last-commit/vEnhance/napkin)
 ![Forks](https://img.shields.io/github/forks/vEnhance/napkin)
@@ -18,7 +18,7 @@ who helped with the initial setup of the deployment system.)
 
 The project can be compiled on a system supporting `latexmk` and `asymptote`,
 with a sufficiently recent version of TeX Live.
-You'll need to `mkdir asy`, then simply run `latexmk`.
+Simply run `latexmk`.
 On a system with nix, just run `nix build`.
 
 _Pull requests are welcome!_

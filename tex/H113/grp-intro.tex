@@ -297,7 +297,7 @@ I now state the following proposition.
 	\begin{enumerate}[(a)]
 		\ii The identity of a group is unique.
 		\ii The inverse of any element is unique.
-		\ii For any $g \in G$, $(g\inv)\inv = g$.
+		\ii For any $g \in G$, ${(g\inv)}\inv = g$.
 	\end{enumerate}
 \end{fact}
 \begin{proof}
@@ -427,7 +427,7 @@ uses the operation of $H$.
 		\[ (3^0, 3^1, 3^2, 3^3, 3^4, 3^5)
 			\equiv (1,3,2,6,4,5) \pmod 7. \]
 		(Technically, I should more properly write $3^{0 \bmod 6} = 1$ and so on to be pedantic.)
-		\ii Finally, we need to verify that this map respects the group action.
+		\ii Finally, we need to verify that this map respects the group operation.
 		In other words, we want to see that
 		$\phi(a+b) = \phi(a) \phi(b)$
 		since the operation of $\Zc 6$ is addition
@@ -683,9 +683,8 @@ By requiring an inverse element to exist, you get rid of this issue.
 it's hard to define inverses without it.)
 
 Even more abstruse comment:
-\Cref{thm:cayley_theorem} shows that groups are actually shadows of
-the so-called symmetric groups (defined later, also called permutation groups).
-This makes rigorous the notion that ``groups are very symmetric''.
+\Cref{thm:cayley_theorem} shows that groups are actually shadows of symmetric
+groups. This makes rigorous the notion that ``groups are very symmetric''.
 
 \section{\problemhead}
 
@@ -758,7 +757,7 @@ This makes rigorous the notion that ``groups are very symmetric''.
 \end{problem}
 
 \begin{dproblem}
-	\gim
+	\onechili
 	Let $G$ be a finite group.\footnote{In other words,
 		permutation groups can be arbitrarily weird.
 		I remember being highly unsettled by this theorem when I first heard of it,
@@ -781,9 +780,10 @@ This makes rigorous the notion that ``groups are very symmetric''.
 \end{dproblem}
 
 \begin{problem}
-	\gim
+	\onechili
 	Find the smallest integer $n$
-	such that the symmetric group $S_n$ has a subgroup isomorphic to $D_{2018}$.
+	such that the symmetric group $S_n$ has a subgroup
+	isomorphic to the dihedral group $D_{2018}$ of order $2018$.
 	\begin{hint}
 		For the lower bound, consider orders (note that $1009$ is prime).
 		For the upper bound, consider a $1009$-gon.
@@ -805,7 +805,7 @@ This makes rigorous the notion that ``groups are very symmetric''.
 \end{problem}
 
 \begin{problem}
-	[IMO SL 2005 C5] \yod
+	[IMO SL 2005 C5] \twochili
 	There are $n$ markers, each with one side white and the other side black.
 	In the beginning, these $n$ markers are aligned in a row so that their white sides are all up.
 	In each step, if possible, we choose a marker whose white side is up
@@ -827,7 +827,7 @@ This makes rigorous the notion that ``groups are very symmetric''.
 \end{problem}
 
 \begin{problem}
-	\gim
+	\onechili
 	Let $p$ be a prime and $F_1 = F_2 = 1$, $F_{n+2} = F_{n+1} + F_n$
 	be the Fibonacci sequence.
 	Show that $F_{2p(p^2-1)}$ is divisible by $p$.

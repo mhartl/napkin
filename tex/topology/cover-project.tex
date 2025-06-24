@@ -14,7 +14,7 @@ Here is the notion of ``nice'':
 \begin{definition}
 	Let $p \colon E \to B$ be a continuous function.
 	Let $U$ be an open set of $B$.
-	We call $U$ \vocab{evenly covered} (by $p$) if $p\pre(U)$ is a disjoint union of open sets (possibly infinite) such that $p$ restricted to any of these sets is a homeomorphism.
+	We call $U$ \vocab{evenly covered} (by $p$) if $p\pre(U)$ is a disjoint union of open sets of $E$ (possibly infinite) such that $p$ restricted to any of these sets is a homeomorphism.
 \end{definition}
 Picture:
 \begin{center}
@@ -33,7 +33,7 @@ is a bunch of copies of it. (Actually, a little more: each of the pancakes is ho
 	[On requiring surjectivity of $p$]
 	Let $p \colon E \to B$ be satisfying this definition,
 	except that $p$ need not be surjective.
-	Show that the image of $p$ is a connected component of $B$.
+	Show that the image of $p$ is a disjoint union of connected components of $B$.
 	Thus if $B$ is connected and $E$ is nonempty,
 	then $p \colon E \to B$ is already surjective.
 	For this reason, some authors omit the surjectivity hypothesis
@@ -116,7 +116,7 @@ whose pre-image is a bunch of copies in $\RR$.
 
 Note that not all open neighborhoods work this time:
 notably, $U = S^1$ does not work because the pre-image
-would be the entire $\RR$.
+would be the entire $\RR$ which is not homeomorphic with $S^1$.
 
 \begin{example}[Covering of $S^1$ by itself]
 	The map $S^1 \to S^1$ by
@@ -233,7 +233,7 @@ It turns out this is true more generally.
 	\[ \left\{ \gamma\pre(U_b) \mid b \in B \right\} \]
 	is an open cover of $[0,1]$.
 	As $[0,1]$ is compact we can take a finite subcover.
-	Thus we can chop $[0,1]$ into finitely many disjoint closed intervals
+	Thus we can chop $[0,1]$ into finitely many interior-disjoint closed intervals
 	$[0,1] = I_1 \sqcup I_2 \sqcup \dots \sqcup I_N$ in that order,
 	such that for every $I_k$, $\gamma\im(I_k)$ is contained
 	in some $U_b$.
@@ -292,10 +292,10 @@ Another nice application of this result is \Cref{ch:complex_log}.
 Let's return to the task of computing fundamental groups.
 Consider a covering projection $p \colon (E, e_0) \to (B, b_0)$.
 
-A loop $\gamma$ can be lifted uniquely to $\tilde\gamma$ in $E$
+A loop $\gamma$ in $B$ can be lifted uniquely to $\tilde\gamma$ in $E$
 which starts at $e_0$ and ends at some point $e$ in the fiber $p\pre(b_0)$.
 You can easily check that this $e \in E$ does not change if we
-pick a different path $\gamma'$ homotopic to $\tilde\gamma$.
+pick a different path $\gamma'$ homotopic to $\gamma$.
 \begin{ques}
 	Look at the picture in \Cref{ex:lifting_circle}.
 
@@ -339,7 +339,7 @@ The below proposition summarizes this and more.
 	which unites them.
 	But then consider the composition of maps
 	\[ [0,1] \times [0,1] \taking{F} E \taking{p} B. \]
-	You can check this is a homotopy from $\gamma_1$ to $\gamma_2$.
+	You can check $p \circ F$ is a homotopy from $\gamma_1$ to $\gamma_2$.
 	Hence $[\gamma_1] = [\gamma_2]$, done.
 \end{proof}
 
@@ -349,7 +349,7 @@ This motivates:
 	$p \colon E \to B$ where $E$ is simply connected (and in particular path-connected).
 \end{definition}
 \begin{abuse}
-	When $p$ is understood, we sometimes just say $E$ is the universal cover.
+	When $p$ is understood, we sometimes just say $E$ is the universal cover of $B$.
 \end{abuse}
 
 \begin{example}[Fundamental group of $S^1$]
@@ -528,7 +528,7 @@ More importantly, we have:
 	\end{itemize}
 \end{example}
 
-It turns out that these are the \emph{only} covering projections of $S^n$ by path-connected spaces: there's one for each subgroup of $\ZZ$.
+It turns out that these are the \emph{only} covering projections of $S^1$ by path-connected spaces: there's one for each subgroup of $\ZZ$.
 (We don't care about disconnected spaces because, again, a covering projection
 via disconnected spaces is just a bunch of unrelated ``good'' coverings.)
 For this statement to make sense I need to tell you what it means for

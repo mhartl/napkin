@@ -142,7 +142,7 @@ By considering the set $X$ of ALL subsets of size $p^n$ at once, we can exploit 
 
 Here is the proof.
 \begin{itemize}
-	\ii Let $G$ act on $X$ by $g \cdot X \defeq \left\{ gx \mid x \in X \right\}$.
+	\ii Let $G$ act on $X$ by $g \cdot S \defeq \left\{ gs \mid s \in S \right\}$.
 	\ii Take an orbit $\OO$ with size not divisible by $p$.
 	(This is possible because of our deep number theoretic fact.
 	Since $\left\lvert X \right\rvert$ is nonzero mod $p$ and the orbits partition $X$,
@@ -159,10 +159,10 @@ Here is the proof.
 
 
 \subsection{Step 2: Any two Sylow $p$-subgroups are conjugate}
-Let $P$ be a Sylow $p$-subgroup (which exists by the previous step).
-We now prove that for any $p$-group $Q$, $Q \subseteq gPg\inv$.
-Note that if $Q$ is also a Sylow $p$-subgroup, then $Q = gPg\inv$ for size reasons;
-this implies that any two Sylow subgroups are indeed conjugate.
+If $P$ is a Sylow $p$-subgroup and $Q$ is a $p$-group, we prove $Q
+\subseteq gPg\inv$. Note that if $Q$ is also a Sylow $p$-subgroup, then
+$Q = gPg\inv$ for size reasons; this implies that any two Sylow
+subgroups are indeed conjugate.
 
 \textbf{Let $Q$ act on the set of left cosets of $P$ by left multiplication.}
 Note that
@@ -176,21 +176,21 @@ Equivalently, $qg \in gP$ for all $q \in Q$, so $Q \subseteq gPg\inv$ as desired
 
 
 \subsection{Step 3: Showing $n_p \equiv 1 \pmod p$}
-Let $\mathcal S$ denote the set of all the Sylow $p$-subgroups.
-Let $P \in \mathcal S$ be arbitrary.
+Let $\mathcal S$ denote the set of all the Sylow $p$-subgroups. By our
+first step, there exists some $P \in \mathcal S$.
 \begin{ques}
 	Why does $\left\lvert \mathcal S \right\rvert$ equal $n_p$?
 	(In other words, are you awake?)
 \end{ques}
 Now we can proceed with the proof.
-Let $P$ act on $\mathcal S$ by conjugation.
-Then:
+Let $P$ act on $\mathcal S$ by conjugation. Then:
 \begin{itemize}
-	\ii Because $P$ is a $p$-group, $n_p \pmod p$ is the number of fixed points
-	of this action.
-	Now we claim $P$ is the only fixed point of this action.
+	\ii Because $P$ is a $p$-group,
+  the orbits of the action have sizes which are in $\{p^0, p^1, p^2, \dots\}$
+  In particular, the number of fixed points modulo $p$ equals $n_p \pmod p$.
+	\ii Now we claim $P$ is the only fixed point of this action.
 	\ii Let $Q$ be any other fixed point, meaning $xQx\inv = Q$ for any $x \in P$.
-	\ii Define the normalizer $N_G(Q) = \left\{ g \in G \mid gQg\inv = Q \right\}$.  It contains both $P$ and $Q$.
+	\ii Define the normalizer $N_G(Q) = \left\{ g \in G \mid gQg\inv = Q \right\}$. It contains both $P$ and $Q$.
 	\ii Now for the crazy part: apply Step 2 to $N_G(Q)$.
 	Since $P$ and $Q$ are Sylow $p$-subgroups of it, they must be conjugate.
 	\ii Hence $P=Q$, as desired.
@@ -317,7 +317,7 @@ Math is weird.
 
 \begin{problem}
 	[Engel's PSS?]
-	\gim
+	\onechili
 	Consider the set of all words consisting of the letters $a$ and $b$.
 	Given such a word, we can change the word either
 	by inserting a word of the form $www$,
@@ -341,7 +341,7 @@ Math is weird.
 \end{problem}
 
 \begin{problem}
-	\yod
+	\twochili
 	Let $p$ be a prime and suppose $G$ is a simple group
 	whose order is a power of $p$.
 	Show that $G \cong \Zc p$.
@@ -377,4 +377,26 @@ Math is weird.
 		we obtain $\left\lvert G \right\rvert \equiv 1 \pmod p$,
 		which is a contradiction.
 	\end{sol}
+\end{problem}
+
+\begin{problem}
+	[Athemath Community-Building Event \#1, Fall 2022]
+	\onechili
+	A group action $\cdot$ of a group $G$ on set $X$ is said to be
+	\begin{itemize}
+		\ii \vocab{transitive} if for all $x_1, x_2 \in X$,
+		there exists a $g$ such that $g \cdot x_1 = x_2$;
+
+		\ii \vocab{faithful} if the only element $g \in G$
+		such that $g \cdot x = x$ for every $x \in X$ is $g = 1_G$.
+		In other words, the only element which acts trivially on the entire set $X$
+		is the identity element of $G$.
+	\end{itemize}
+	Does there exist a faithful transitive action of $S_5$ on a six-element set?
+  \begin{sol}
+    I can't remember what solution I had in mind when I added this problem in.
+    There's a more technical solution outlined at
+    \url{https://github.com/vEnhance/napkin/pull/268#issuecomment-2767676253}
+    but I don't think it's the one I originally had.
+  \end{sol}
 \end{problem}

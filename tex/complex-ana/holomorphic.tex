@@ -774,7 +774,7 @@ The first few results are the most important.
 
 \begin{sproblem}
 	[Liouville's theorem]
-	\gim
+	\onechili
 	Let $f \colon \CC \to \CC$ be an entire function.
 	Suppose that $\left\lvert f(z) \right\rvert < 1000$ for all complex numbers $z$.
 	Prove that $f$ is a constant function.
@@ -823,7 +823,7 @@ The first few results are the most important.
 \begin{sproblem}
 	[Identity theorem]
 	\label{prob:identity_thm}
-	\gim
+	\onechili
 	Let $f, g \colon U \to \CC$ be holomorphic, and assume that $U$ is connected.
 	Prove that if $f$ and $g$ agree on some open neighborhood,
 	then $f = g$.
@@ -881,6 +881,18 @@ The first few results are the most important.
 		in the image within $\eps$ of a given a point $w \in \CC$.
 		Look at $\frac{1}{f(z) - w}$ and use Liouville's theorem.
 	\end{sol}
+\end{problem}
+
+\begin{problem}[Removable singularity theorem]
+	Let $U$ be open, $p \in U$, and $f \colon U \setminus \{p\} \to \CC$ be holomorphic.
+	Suppose $f$ is bounded. Show that $\lim_{z \to p} f(z)$ exists, and the extension
+	$f \colon U \to \CC$ is holomorphic at $p$.
+	\begin{hint}
+		You can adapt part of the proof of Cauchy-Goursat theorem presented above,
+		and apply $ML$ estimation lemma to prove $\oint_\gamma f(z) \; dz = 0$.
+		In this case however, you already know $f$ is holomorphic, so you must have
+		$|\oint_{\gamma_i} f \; dz| \geq |\oint_\gamma f \; dz|$, without the $\frac{1}{4}$ factor.
+	\end{hint}
 \end{problem}
 
 %\begin{dproblem}
